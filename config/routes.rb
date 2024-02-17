@@ -10,6 +10,9 @@ Rails.application.routes.draw do
     resources :posts
     resources :spaces do
       resources :users, only: %i[create], controller: 'spaces/users'
+      resources :items
+      resources :suppliers
+      resources :orders
     end
     resources :links, only: %i[show create destroy], param: :sku
     resources :users, only: %i[index edit update destroy]

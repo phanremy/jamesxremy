@@ -53,6 +53,12 @@ en:
       form:
         new_user_description: Create an account and become a member of %{space_name}
         existing_user_description: Become a member of %{space_name}
+  suppliers:
+    new: New Supplier
+    create_success: Supplier was successfully created!
+    destroy_confirm: Are you sure? Deleting a Supplier is permanent.
+    destroy_success: Supplier was successfully deleted.
+    update_success: Supplier was successfully updated!
   users:
     index:
       title: Users

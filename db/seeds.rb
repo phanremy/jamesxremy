@@ -45,3 +45,8 @@ _space2 = Space.create(owner: creator, description: 'My Space', user_ids: [])
 # end
 
 Link.create(space: space1, owner: creator)
+
+100.times.each do |time|
+  Supplier.create(name: generate_sku(excluded: Supplier.pluck(:name)),
+                  space: space1)
+end
