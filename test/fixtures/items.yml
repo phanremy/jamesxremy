@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+default:
+  name: MyString
+  reference: MyString
+  supplier: default
+  space: default
+
+alternative:
+  name: MyString
+  reference: MyString
+  supplier: alternative
+  space: alternative

@@ -1,9 +1,9 @@
-one:
+default:
   title: MyString
   body: MyText
   user: admin
 
-two:
+alternative:
   title: MyString
   body: MyText
   user: admin

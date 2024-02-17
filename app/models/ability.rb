@@ -18,6 +18,9 @@ class Ability
     can :manage, Space
     can :manage, User
     can :manage, Link
+    can :manage, Supplier
+    can :manage, Item
+    can :manage, Order
   end
 
   def user_abilities(user)

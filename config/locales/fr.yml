@@ -41,12 +41,12 @@ fr:
     update_success: Le post a été mis à jour avec succès !
   spaces:
     index:
-      title: Espaces
-    new: Nouvel espace
-    create_success: L'espace a été créé avec succès !
-    destroy_confirm: Êtes-vous sûr ? La suppression d'un espace est définitive.
-    destroy_success: L'espace a été supprimé avec succès.
-    update_success: L'espace a été mis à jour avec succès !
+      title: Restaurants
+    new: Nouveau restaurant
+    create_success: Le restaurant a été créé avec succès !
+    destroy_confirm: Êtes-vous sûr ? La suppression d'un restaurant est définitive.
+    destroy_success: Le restaurant a été supprimé avec succès.
+    update_success: Le restaurant a été mis à jour avec succès !
     users:
       unconfirmed:
         description: Votre adhésion est en attente de confirmation.
@@ -56,7 +56,7 @@ fr:
   users:
     index:
       title: Utilisateurs
-      spaces_count: Nb d'espaces
+      spaces_count: Nb de restaurants
       actions: Actions
     destroy_confirm: Êtes-vous sûr ? La suppression d'un utilisateur est définitive.
     destroy_not_yourself: Vous ne pouvez pas vous supprimer vous-même
@@ -70,7 +70,7 @@ fr:
 
   activerecord:
     models:
-     space: Espace
+     space: Restaurant
      post: Poste
      user: Utilisateur
 

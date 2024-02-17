@@ -41,12 +41,12 @@ en:
     update_success: Post was successfully updated!
   spaces:
     index:
-      title: Spaces
-    new: New Space
-    create_success: Space was successfully created!
-    destroy_confirm: Are you sure? Deleting a space is permanent.
-    destroy_success: Space was successfully deleted.
-    update_success: Space was successfully updated!
+      title: Restaurants
+    new: New Restaurant
+    create_success: Restaurant was successfully created!
+    destroy_confirm: Are you sure? Deleting a Restaurant is permanent.
+    destroy_success: Restaurant was successfully deleted.
+    update_success: Restaurant was successfully updated!
     users:
       unconfirmed:
         description: Your membership is pending for confirmation.
@@ -56,7 +56,7 @@ en:
   users:
     index:
       title: Users
-      spaces_count: Spaces Count
+      spaces_count: Restaurants Count
       actions: Actions
     destroy_confirm: Are you sure? Deleting an User is permanent.
     destroy_not_yourself: You cannot delete yourself
@@ -70,7 +70,10 @@ en:
 
   activerecord:
     models:
-     space: Space
+     space: Restaurant
+     supplier: Supplier
+     item: Product
+     order: Purchase Order
      post: Post
      user: User
 
