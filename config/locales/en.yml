@@ -1,0 +1,94 @@
+en:
+  actions:
+    delete: Delete
+    edit: Edit
+    home: Home
+    navigation:
+      lg: Navigation
+      sm: Nav.
+    options: Options
+    search: Search
+    submit: Submit
+    validate: Agree
+    reload: Refresh Page
+  alert:
+    characters_minimum: (%{number} characters minimum)
+    general_error: Something went wrong, please try again later
+    done: Done!
+    none: No %{class_name}
+  devise:
+    forgot_password: Forgot your password?
+    log_in: Log in
+    log_out: Log out
+    send_reset: Send me reset password instructions
+    sign_up: Sign up
+  pagy:
+    gap: …
+    next: Next
+    prev: Prev
+  links:
+    description: A temporary link to be shared with new members
+    available_until: Available until %{date}
+    create: Create Link
+    create_success: Link was successfully created!
+    destroy_success: Link was successfully deleted.
+    show_failure: Incorrect link
+  posts:
+    new: New Post
+    create_success: Post was successfully created!
+    destroy_confirm: Are you sure? Deleting a post is permanent.
+    destroy_success: Post was successfully deleted.
+    update_success: Post was successfully updated!
+  spaces:
+    index:
+      title: Spaces
+    new: New Space
+    create_success: Space was successfully created!
+    destroy_confirm: Are you sure? Deleting a space is permanent.
+    destroy_success: Space was successfully deleted.
+    update_success: Space was successfully updated!
+    users:
+      unconfirmed:
+        description: Your membership is pending for confirmation.
+      form:
+        new_user_description: Create an account and become a member of %{space_name}
+        existing_user_description: Become a member of %{space_name}
+  users:
+    index:
+      title: Users
+      spaces_count: Spaces Count
+      actions: Actions
+    destroy_confirm: Are you sure? Deleting an User is permanent.
+    destroy_not_yourself: You cannot delete yourself
+    destroy_success: User was successfully deleted.
+    not_confirmed: Pending confirmation
+    update_success: User was successfully updated!
+  date:
+    formats:
+      fr_long: "%A %e %B %Y"
+      fr_short: "%e %B %Y"
+
+  activerecord:
+    models:
+     space: Space
+     post: Post
+     user: User
+
+    attributes:
+      space:
+        owner: Admin
+        users: Members
+      user:
+        admin: Admin
+        confirmed: Confirmed
+        email: Email
+        password: Password
+        password_confirmation: Password Confirmation
+        remember_me: Remember me
+
+  errors:
+    models:
+      # space:
+      #   attributes:
+      #     description:
+            # uniqueness: already taken (a user cannot have two spaces with the same description)

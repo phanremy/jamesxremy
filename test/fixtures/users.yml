@@ -1,0 +1,24 @@
+superadmin:
+  email: superadmin@example.com
+  admin: true
+  confirmed: true
+
+admin:
+  email: admin@example.com
+  admin: true
+  confirmed: true
+
+creator:
+  email: creator@example.com
+  admin: false
+  confirmed: true
+
+member:
+  email: member@example.com
+  admin: false
+  confirmed: true
+
+visitor:
+  email: visitor@example.com
+  admin: false
+  confirmed: false

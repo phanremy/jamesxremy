@@ -1,0 +1,5 @@
+<% content_for :header do %><% end %>
+<%= turbo_frame_tag :content do %>
+  <%= render 'spaces/users/banner', space: @space, space_user: @space_user %>
+  <%= render 'spaces/home', space: @space %>
+<% end %>

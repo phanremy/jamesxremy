@@ -1,0 +1,38 @@
+<%= form_with model: space_user,
+              url: space_users_url(space_user.space),
+              method: :post,
+              builder: TailwindBuilder do |form| %>
+
+  <% if user_signed_in? %>
+    <div class="w-auto mb-6">
+      <%= t('.existing_user_description', space_name: space_user.space.description) %>
+    </div>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+    <%= form.submit t('actions.validate') %>
+  <% else %>
+    <div class="w-auto mb-6">
+      <%= t('.new_user_description', space_name: space_user.space.description) %>
+    </div>
+    <div class="flex items-center">
+      <%= form.fields_for :user, space_user.build_user do |user| %>
+        <div class="w-auto block lg:flex items-center justify-between">
+          <div class="relative my-4 border-b-2 focus-within:border-blue-500">
+            <%= user.email_field :email, placeholder: " " %>
+            <%= user.label :email %>
+          </div>
+          <div class="flex flex-wrap ">
+            <div class="relative my-4 border-b-2 focus-within:border-blue-500">
+              <%= user.password_field :password, placeholder: " " %>
+              <%= user.label :password %>
+            </div>
+            <div class="relative my-4 border-b-2 focus-within:border-blue-500">
+              <%= user.password_field :password_confirmation, placeholder: " " %>
+              <%= user.label :password_confirmation %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <%= form.submit t('actions.submit') %>
+  <% end %>
+<% end %>

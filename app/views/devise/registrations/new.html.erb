@@ -1,0 +1,32 @@
+<div class="flex justify-center items-center p-10">
+  <div class="w-full lg:w-1/2 pt-10">
+    <h2><%= t('devise.sign_up') %></h2>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), builder: TailwindBuilder, data: { turbo: false }) do |form| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="relative my-8 border-b-2 focus-within:border-blue-500">
+        <%= form.email_field :email, autofocus: true, autocomplete: "email", placeholder: " " %>
+        <%= form.label :email %>
+      </div>
+
+      <% password = t('password', scope: 'activerecord.attributes.user') %>
+      <% password_label = "#{password} #{t('alert.characters_minimum', number: @minimum_password_length)}" if @minimum_password_length %>
+      <div class="relative my-8 border-b-2 focus-within:border-blue-500">
+        <%= form.password_field :password, autocomplete: "new-password", placeholder: " " %>
+        <%= form.label :password, password_label %>
+      </div>
+
+      <div class="relative my-8 border-b-2 focus-within:border-blue-500">
+        <%= form.password_field :password_confirmation, autocomplete: "new-password", placeholder: " " %>
+        <%= form.label :password_confirmation %>
+      </div>
+
+      <div class="actions">
+        <%= form.submit t('devise.sign_up'), class: "my-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer" %>
+      </div>
+    <% end %>
+
+    <%= render "devise/shared/links" %>
+  </div>
+</div>

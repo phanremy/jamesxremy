@@ -1,0 +1,9 @@
+<%= turbo_frame_tag :content do %>
+  <% if can? :manage, @post %>
+    <div class="flex">
+      <%= link_to t('actions.edit'), edit_post_path, class: "text-blue-400 hover:text-blue-500 hover:underline" %>
+       | <%= button_to t('actions.delete'), post_path, method: :delete, form: { data: { turbo_confirm: t('spaces.destroy_confirm') } }, class: "text-red-400 hover:text-red-500 hover:underline" %>
+    </div>
+  <% end %>
+  <%= render @post %>
+<% end %>

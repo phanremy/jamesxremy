@@ -1,0 +1,41 @@
+<%#
+  This template is i18n-ready: if you don't use i18n, then you can replace the pagy_t
+  calls with the actual strings ("&lsaquo; Prev", "Next &rsaquo;", "&hellip;").
+
+  The link variable is set to a proc that returns the link tag.
+  Usage: link.call( page_number [, text [, extra_attributes_string ]])
+-%>
+<% return if pagy.pages == 1 %>
+
+<% link = pagy_link_proc(pagy) -%>
+
+<nav class="pagy_nav pagination" role="navigation">
+  <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+    <div>
+      <p class="text-sm leading-5 text-gray-700">
+        Showing
+        <span class="font-medium"><%= pagy.from %></span>
+        to
+        <span class="font-medium"><%= pagy.to %></span>
+        of
+        <span class="font-medium"><%= pagy.count %></span>
+        results
+      </p>
+    </div>
+
+    <div>
+      <% if pagy.prev                -%>  <span class="page prev text-center bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-2 border border-blue-500 hover:border-transparent rounded"><%== link.call(pagy.prev, t('pagy.prev'), 'aria-label="previous"') %></span>
+      <% else                        -%>  <span class="page prev disabled"><%#== pagy_t('pagy.nav.prev') %></span>
+      <% end                         -%>
+      <% pagy.series.each do |item| # series example: [1, :gap, 7, 8, "9", 10, 11, :gap, 36] -%>
+      <%   if    item.is_a?(Integer) -%>  <span class="page text-blue-400 hover:text-blue-500 hover:underline"><%== link.call(item) %></span>
+      <%   elsif item.is_a?(String)  -%>  <span class="page current font-bold "><%= item %></span>
+      <%   elsif item == :gap        -%>  <span class="page gap"><%== t('pagy.gap') %></span>
+      <%   end                       -%>
+      <% end                         -%>
+      <% if pagy.next                -%>  <span class="page next text-center bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-2 border border-blue-500 hover:border-transparent rounded"><%== link.call(pagy.next, t('pagy.next'), 'aria-label="next"') %></span>
+      <% else                        -%>  <span class="page next disabled"><%#== pagy_t('pagy.nav.next') %></span>
+      <% end                         -%>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rails7ImportmapsTailwind - ProjectTemplate</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+
+    <meta name="description" content="<%= meta_description %>">
+
+    <!-- Facebook Open Graph data -->
+    <meta property="og:title" content="<%= meta_title %>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="<%= request.original_url %>" />
+    <meta property="og:image" content="<%= meta_image %>" />
+    <meta property="og:description" content="<%= meta_description %>" />
+    <meta property="og:site_name" content="<%= meta_title %>" />
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="<%= DEFAULT_META["twitter_account"] %>">
+    <meta name="twitter:title" content="<%= meta_title %>">
+    <meta name="twitter:description" content="<%= meta_description %>">
+    <meta name="twitter:creator" content="<%= DEFAULT_META["twitter_account"] %>">
+    <meta name="twitter:image:src" content="<%= meta_image %>">
+    <%#= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <link href="https://unpkg.com/slim-select@latest/dist/slimselect.css" rel="stylesheet"></link>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <%= turbo_frame_tag :main do %>
+      <% unless content_for? :header %>
+        <div class="relative z-10">
+          <%= render 'shared/header' %>
+        </div>
+      <% end %>
+      <div class="absolute bottom-0 right-0 mr-5 z-20">
+        <%= turbo_frame_tag :flash do %>
+          <%= render 'shared/flash' %>
+        <% end %>
+      </div>
+      <div class="container mx-auto p-2">
+        <%= turbo_frame_tag :content do %>
+          <%= yield %>
+        <% end %>
+      </div>
+    <% end %>
+  </body>
+</html>

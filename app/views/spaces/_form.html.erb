@@ -1,0 +1,24 @@
+<%= turbo_frame_tag :content do %>
+  <div class="w-auto lg:w-1/2">
+    <%= form_with model: @space, builder: TailwindBuilder do |form| %>
+      <div class="relative my-8 border-b-2 focus-within:border-blue-500">
+        <%= form.text_field :description, placeholder: " " %>
+        <%= form.label :description %>
+      </div>
+      <div class="flex my-8 items-center justify-between">
+        <%= form.label :users, class: "relative", style: "top: 0px; transform: none !important;" %>
+        <%= form.select(:user_ids,
+                        User.excluding(@space.owner).order(:email).pluck(:email, :id),
+                        {},
+                        { data:     { controller:  "slim-select",
+                                      placeholder: t('actions.search'),
+                                      "no-result": t('alert.none', class_name: t('user', scope: 'activerecord.models').pluralize.downcase)  },
+                          multiple: true,
+                          class:    "w-full lg:w-1/2 ml-6" }) %>
+      </div>
+      <div class="actions">
+        <%= form.submit class:"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer" %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

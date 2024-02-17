@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+default:
+  space: default
+  owner: creator
+  end_date: <%= DateTime.now + 1.day %>
+  sku: default
+
+alternative:
+  space: alternative
+  owner: creator
+  end_date: <%= DateTime.now + 1.day %>
+  sku: alternative

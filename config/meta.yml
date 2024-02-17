@@ -1,0 +1,5 @@
+meta_product_name: "Rails7ImportmapsTailwind - ProjectTemplate"
+meta_title: "Rails7ImportmapsTailwind - ProjectTemplate"
+meta_description: "Rails7 Importmaps Tailwind - Project Template"
+meta_image: "components/og-image-menu.png" # should exist in `app/assets/images/`
+twitter_account: "@product_twitter_account"   # required for Twitter Cards

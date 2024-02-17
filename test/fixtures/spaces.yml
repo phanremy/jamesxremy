@@ -1,0 +1,9 @@
+default:
+  description: Default Space
+  owner: creator
+  public: false
+
+alternative:
+  description: Alternative Space
+  owner: creator
+  public: false

@@ -1,0 +1,40 @@
+<div class="w-full sticky top-0 bg-white py-5">
+  <div class="w-full flex flex-wrap items-center justify-between">
+    <div class="px-2 lg:px-4">
+      <%= link_to t('actions.home'), root_path, data: { turbo: false }, class: "block text-center bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" %>
+    </div>
+    <div class="flex flex-wrap px-2">
+      <% if user_signed_in? && current_user.admin? %>
+        <%= link_to 'Modal', open_modal_path, class: "block text-center bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" %>
+      <% end %>
+    </div>
+    <div class="px-2 lg:px-4">
+      <%= dropdown button_label_lg:  t('actions.navigation.lg'),
+                   button_label_sm:  t('actions.navigation.sm'),
+                   is_left:          false,
+                   is_top:           true,
+                   responsive_title: false do %>
+        <%= dropdown_link t('spaces.index.title'), spaces_path, turbo: false if user_signed_in? && current_user.confirmed? %>
+        <%= dropdown_link t('posts.new'), new_post_path, turbo: false if can? :create, Post %>
+        <%= dropdown_link t('spaces.new'), new_space_path, turbo: false if can? :manage, Space %>
+        <%= dropdown_link t('users.index.title'), users_path, turbo: false if can? :manage, User %>
+        <% if user_signed_in? %>
+          <%= dropdown_link t('devise.log_out'), destroy_user_session_path, turbo: false %>
+        <% else %>
+          <%= dropdown_link t('devise.sign_up'), new_user_registration_path, turbo: false %>
+          <%= dropdown_link t('devise.log_in'), new_user_session_path, turbo: false %>
+        <% end %>
+      <% end %>
+      <%= dropdown button_label_lg:  I18n.locale.upcase,
+                   button_label_sm:  I18n.locale.upcase,
+                   is_left:          false,
+                   is_top:           true,
+                   responsive_title: false do %>
+        <% I18n.available_locales.each do |locale| %>
+          <% current_locale = locale == I18n.locale %>
+          <%= dropdown_link locale.to_s.upcase, url_for(locale: locale), turbo: false, deactivated: current_locale %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

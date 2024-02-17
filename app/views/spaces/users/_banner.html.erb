@@ -1,0 +1,9 @@
+<div class="w-full border border-8 border-green-500 p-5 mb-6 mt-2">
+  <%= turbo_frame_tag :space_users do %>
+    <% if user_signed_in? && space.unconfirmed_member?(current_user) %>
+      <%= render 'spaces/users/unconfirmed' %>
+    <% else %>
+      <%= render 'spaces/users/form', space_user: space_user %>
+    <% end %>
+  <% end %>
+</div>

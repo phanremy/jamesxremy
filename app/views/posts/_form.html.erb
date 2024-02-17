@@ -1,0 +1,18 @@
+<%= turbo_frame_tag :content do %>
+  <div class="w-auto lg:w-1/2">
+    <%= form_with model: post, builder: TailwindBuilder do |form| %>
+      <div class="relative my-8 border-b-2 focus-within:border-blue-500">
+        <%= form.text_field :title, placeholder: " " %>
+        <%= form.label :title %>
+      </div>
+      <div class="relative my-8 border-b-2 focus-within:border-blue-500">
+        <%= form.text_area :body, placeholder: " " %>
+        <%= form.label :body %>
+      </div>
+      <div class="field">
+        <%= form.hidden_field :user_id, value: current_user&.id %>
+        <%= form.submit t('actions.submit') %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

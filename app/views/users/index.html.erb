@@ -1,0 +1,32 @@
+<%= turbo_frame_tag :content do %>
+  <%= render 'users/search_and_filter' %>
+  <table>
+    <thead>
+      <tr>
+        <th class="px-2"><%= t('email', scope: 'activerecord.attributes.user') %></th>
+        <th class="px-2"><%= t('.spaces_count') %></th>
+        <th class="px-2"><%= t('admin', scope: 'activerecord.attributes.user') %></th>
+        <th class="px-2"><%= t('confirmed', scope: 'activerecord.attributes.user') %></th>
+        <th class="px-2"><%= t('.actions') %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr class="border px-2 py-1">
+          <td class="border px-2 py-1"><%= user.email %></td>
+          <td class="border px-2 py-1"><%= user.spaces.count %></td>
+          <td class="border px-2 py-1"><%= user.admin? %></td>
+          <td class="border px-2 py-1"><%= user.confirmed? %></td>
+          <td class="border px-2 py-1">
+            <div class="flex">
+              <%= link_to t('actions.edit'), edit_user_path(user), class: "text-blue-400 hover:text-blue-500 hover:underline" %>
+              <% if user != current_user %>
+                 | <%= button_to t('actions.delete'), user_path(user), method: :delete, form: { data: { turbo_confirm: t('users.destroy_confirm') } }, class: "text-red-400 hover:text-red-500 hover:underline" %>
+              <% end %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

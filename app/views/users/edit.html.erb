@@ -1,0 +1,25 @@
+<%= turbo_frame_tag :content do %>
+  <%= form_with model: @user, builder: TailwindBuilder do |form| %>
+    <div class="relative my-8 border-b-2 focus-within:border-blue-500">
+      <%= form.email_field :email, placeholder: " " %>
+      <%= form.label :email %>
+    </div>
+    <div class="relative my-8 border-b-2 focus-within:border-blue-500">
+      <%= form.password_field :password, placeholder: " " %>
+      <%= form.label :password %>
+    </div>
+      <div class="relative my-8 border-b-2 focus-within:border-blue-500">
+      <%= form.password_field :password_confirmation, placeholder: " " %>
+      <%= form.label :password_confirmation %>
+    </div>
+    <div class="flex relative my-8 justify-start items-center">
+      <%= form.check_box :admin %>
+      <%= form.label :admin, class: "ml-6 text-xs", style: "top: 0px; transform: none !important;" %>
+    </div>
+      <div class="flex relative my-8 justify-start items-center">
+      <%= form.check_box :confirmed %>
+      <%= form.label :confirmed, class: "ml-6 text-xs", style: "top: 0px; transform: none !important;" %>
+    </div>
+    <%= form.submit t('actions.submit') %>
+  <% end %>
+<% end %>

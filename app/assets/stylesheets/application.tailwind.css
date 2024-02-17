@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* FOR FLOATING FORM FIELD : https://notiz.dev/blog/floating-form-field-with-tailwindcss */
+.border-none {
+  border: 0 0 #000 !important;
+}
+
+input, textarea {
+  --tw-ring-shadow: 0 0 #000 !important;
+}
+
+input:focus-within ~ label {
+  @apply transform scale-75 -translate-y-6 text-blue-500;
+}
+
+input:focus-within ~ label,
+input:not(:placeholder-shown) ~ label {
+  @apply transform scale-75 -translate-y-6;
+}
+
+input:focus-within ~ label {
+  @apply text-blue-500;
+}
+
+textarea:focus-within ~ label {
+  @apply transform scale-75 -translate-y-6 text-blue-500;
+}
+
+textarea:focus-within ~ label,
+textarea:not(:placeholder-shown) ~ label {
+  @apply transform scale-75 -translate-y-6;
+}
+
+textarea:focus-within ~ label {
+  @apply text-blue-500;
+}
+
+select:focus-within ~ label {
+  @apply transform scale-75 -translate-y-6 text-blue-500;
+}
+
+select:focus-within ~ label,
+select:not(:placeholder-shown) ~ label {
+  @apply transform scale-75 -translate-y-6;
+}
+
+select:focus-within ~ label {
+  @apply text-blue-500;
+}
+
+/* FOR FLOATING FORM FIELD - END */

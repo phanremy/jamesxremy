@@ -1,0 +1,41 @@
+<h2>Edit <%= resource_name.to_s.humanize %></h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, data: { turbo: false }, builder: TailwindBuilder, data: { turbo: false }) do |form| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= form.label :email %><br />
+    <%= form.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <% password_label = t('password', scope: 'activerecord.attributes.user') %>
+  <% password_label = "#{password} #{t('alert.characters_minimum', number: @minimum_password_length)}" if @minimum_password_length %>
+  <div class="relative my-8 border-b-2 focus-within:border-blue-500">
+    <%= form.password_field :password, autocomplete: "new-password", placeholder: " " %>
+    <%= form.label :password, password_label %>
+  </div>
+
+  <div class="relative my-8 border-b-2 focus-within:border-blue-500">
+    <%= form.password_field :password_confirmation, autocomplete: "new-password", placeholder: " " %>
+    <%= form.label :password_confirmation %>
+  </div>
+
+  <div class="relative my-8 border-b-2 focus-within:border-blue-500">
+    <%= form.password_field :current_password, autocomplete: "current-password", placeholder: " " %>
+    <%= form.label :current_password, value: "current password (we need your current password to confirm your changes)" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Update" %>
+  </div>
+<% end %>
+
+<h3>Cancel my account</h3>
+
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+<%= link_to "Back", :back %>

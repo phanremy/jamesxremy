@@ -1,0 +1,26 @@
+<div class="flex">
+  <%= space.description %>
+  <% if can? :manage, space %>
+     | <%= link_to t('actions.edit'), edit_space_path(space), class: "text-blue-400 hover:text-blue-500 hover:underline" %>
+     | <%= button_to t('actions.delete'), space_path(space), method: :delete, form: { data: { turbo_confirm: t('spaces.destroy_confirm') } }, class: "text-red-400 hover:text-red-500 hover:underline" %>
+  <% end %>
+</div>
+<div class="py-5">
+  <%= t('owner', scope: 'activerecord.attributes.space') %>: <%= space.owner.email %>
+</div>
+<div class="py-5">
+  <%= t('users', scope: 'activerecord.attributes.space') %>:
+  <% space.users.order(confirmed: :desc).each do |user| %>
+    <br><%= user.email %> <%= "(#{t('users.not_confirmed')})" if space.unconfirmed_member?(user) %>
+  <% end %>
+</div>
+<% if can? :manage, space %>
+  <div class="border py-5 p-2">
+    <%= t('links.description') %> <br>
+    <% if current_user.available_link(space) %>
+      <%= render 'links/url', link: current_user.available_link(space) %>
+    <% else %>
+      <%= render 'links/form', disabled: false %>
+    <% end %>
+  </div>
+<% end %>

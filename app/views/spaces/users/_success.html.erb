@@ -1,0 +1,4 @@
+<%= turbo_frame_tag :space_users do %>
+  <p><%= t('alert.done') %></p> <br>
+  <%= link_to t('actions.reload'), '#', data: { turbo: false }, onClick: "window.location.reload()", class: "text-white font-bold py-2 px-4 rounded bg-blue-500 hover:bg-blue-700 cursor-pointer" %>
+<% end %>

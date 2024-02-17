@@ -1,0 +1,94 @@
+es:
+  actions:
+    delete: Eliminar
+    edit: Editar
+    home: Inicio
+    navigation:
+      lg: Navegación
+      sm: Nav.
+    options: Opciones
+    search: Buscar
+    submit: Enviar
+    validate: Aceptar
+    reload: Actualizar página
+  alert:
+    characters_minimum: (mínimo %{number} caracteres)
+    done: ¡Hecho!
+    general_error: Algo salió mal, por favor inténtalo de nuevo más tarde
+    none: No se encontraron %{class_name}
+  devise:
+    forgot_password: ¿Olvidaste tu contraseña?
+    log_in: Iniciar sesión
+    log_out: Cerrar sesión
+    send_reset: Enviar instrucciones para restablecer la contraseña
+    sign_up: Registrarse
+  pagy:
+    gap: …
+    next: Siguiente
+    prev: Anterior
+  links:
+    description: Un enlace temporal para compartir con nuevos miembros
+    available_until: Disponible hasta el %{date}
+    create: Crear enlace
+    create_success: ¡El enlace se creó correctamente!
+    destroy_success: El enlace se eliminó correctamente.
+    show_failure: Enlace incorrecto
+  posts:
+    new: Nuevo post
+    create_success: ¡El post se creó correctamente!
+    destroy_confirm: ¿Estás seguro? Eliminar un post es permanente.
+    destroy_success: El post se eliminó correctamente.
+    update_success: ¡El post se actualizó correctamente!
+  spaces:
+    index:
+      title: Espacios
+    new: Nuevo espacio
+    create_success: ¡El espacio se creó correctamente!
+    destroy_confirm: ¿Estás seguro? Eliminar un espacio es permanente.
+    destroy_success: El espacio se eliminó correctamente.
+    update_success: ¡El espacio se actualizó correctamente!
+    users:
+      unconfirmed:
+        description: Tu membresía está pendiente de confirmación.
+      form:
+        new_user_description: Crea una cuenta y conviértete en miembro de %{space_name}
+        existing_user_description: Conviértete en miembro de %{space_name}
+  users:
+    index:
+      title: Usuarios
+      spaces_count: Num. de espacios
+      actions: Acciones
+    destroy_confirm: ¿Estás seguro? Eliminar un usuario es permanente.
+    destroy_not_yourself: No puedes eliminarte a ti mismo
+    destroy_success: ¡El usuario se eliminó correctamente!
+    not_confirmed: Pendiente de confirmación
+    update_success: ¡El usuario se actualizó correctamente!
+  date:
+    formats:
+      es_long: "%A, %e de %B de %Y"
+      es_short: "%e de %B de %Y"
+
+  activerecord:
+    models:
+     space: Espacio
+     post: Publicación
+     user: Usuario
+
+    attributes:
+      space:
+        description: Descripción
+        users: Miembros
+      user:
+        admin: Admin
+        confirmed: Confirmado(a)
+        email: Correo electrónico
+        password: Contraseña
+        password_confirmation: Confirmación de contraseña
+        remember_me: Recuérdame
+
+  errors:
+    models:
+      # space:
+      #   attributes:
+            # description:
+              # uniqueness: ya está tomado (un usuario no puede tener dos espacios con la misma descripción)

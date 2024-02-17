@@ -1,0 +1,7 @@
+<%= turbo_frame_tag :space_link do %>
+  <%= form_with model: Link.new, builder: TailwindBuilder do |form| %>
+    <%= form.hidden_field :owner_id, value: current_user&.id %>
+    <%= form.hidden_field :space_id, value: @space&.id %>
+    <%= form.submit t('links.create'), disabled: disabled, readonly: disabled %>
+  <% end %>
+<% end %>
