@@ -15,9 +15,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_17_081823) do
   enable_extension "plpgsql"
 
   create_table "items", force: :cascade do |t|
-    t.string "name", default: "", null: false
+    t.string "description", default: "", null: false
     t.string "reference", default: "", null: false
-    t.decimal "quantity", default: "0.0", null: false
+    t.decimal "actual_quantity", default: "0.0", null: false
+    t.decimal "expected_quantity", default: "0.0", null: false
     t.bigint "supplier_id", null: false
     t.bigint "space_id", null: false
     t.datetime "created_at", null: false

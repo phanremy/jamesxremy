@@ -1,4 +1,4 @@
-<%= turbo_frame_tag :content do %>
+<%= turbo_frame_tag :space do %>
   <% if can? :create, Space %>
     <%= link_to t('spaces.new'), new_space_path, data: { turbo: false }, class: 'text-center bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded' %>
     <br><br>

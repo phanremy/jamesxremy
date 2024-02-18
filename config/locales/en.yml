@@ -26,6 +26,14 @@ en:
     gap: …
     next: Next
     prev: Prev
+  items:
+    index:
+      tab: Products
+    new: New Product
+    create_success: Product was successfully created!
+    destroy_confirm: Are you sure? Deleting a Product is permanent.
+    destroy_success: Product was successfully deleted.
+    update_success: Product was successfully updated!
   links:
     description: A temporary link to be shared with new members
     available_until: Available until %{date}
@@ -33,6 +41,9 @@ en:
     create_success: Link was successfully created!
     destroy_success: Link was successfully deleted.
     show_failure: Incorrect link
+  orders:
+    index:
+      tab: Purchase Orders
   posts:
     new: New Post
     create_success: Post was successfully created!
@@ -41,6 +52,7 @@ en:
     update_success: Post was successfully updated!
   spaces:
     index:
+      tab: Home
       title: Restaurants
     new: New Restaurant
     create_success: Restaurant was successfully created!
@@ -54,6 +66,8 @@ en:
         new_user_description: Create an account and become a member of %{space_name}
         existing_user_description: Become a member of %{space_name}
   suppliers:
+    index:
+      tab: Suppliers
     new: New Supplier
     create_success: Supplier was successfully created!
     destroy_confirm: Are you sure? Deleting a Supplier is permanent.

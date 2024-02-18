@@ -50,3 +50,13 @@ Link.create(space: space1, owner: creator)
   Supplier.create(name: generate_sku(excluded: Supplier.pluck(:name)),
                   space: space1)
 end
+
+supplier_ids = Supplier.pluck(:id)
+
+100.times.each do |time|
+  Item.create(description: Faker::Creature::Animal.name,
+              space: space1,
+              supplier_id: supplier_ids.sample,
+              actual_quantity: (2..100).to_a.sample,
+              expected_quantity: (2..100).to_a.sample)
+end

@@ -10,7 +10,7 @@ class TailwindBuilder < ActionView::Helpers::FormBuilder
     super(attribute, text, options)
   end
 
-  %w[email_field password_field text_field text_area date_field].each do |field|
+  %w[email_field password_field text_field text_area date_field number_field].each do |field|
     define_method field do |attribute, options = {}|
       options[:class] = "#{options[:class]} appearance-none block w-full text-gray-700 " \
                         "border-none border-gray-400 rounded px-3 leading-tight bg-transparent".strip

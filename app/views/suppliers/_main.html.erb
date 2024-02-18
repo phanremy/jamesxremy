@@ -1,5 +1,5 @@
 <%= turbo_frame_tag :space do %>
-  <%= render "spaces/tabs", space: %>
+  <%= render "spaces/header", space: %>
   <% if can? :manage, supplier %>
     <div class="flex">
       <%= link_to t('actions.edit'), edit_space_supplier_path(supplier, space_id: space.id), class: "text-blue-400 hover:text-blue-500 hover:underline" %>

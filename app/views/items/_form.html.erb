@@ -1,0 +1,34 @@
+<%= turbo_frame_tag :space do %>
+  <%= render "spaces/header", space: %>
+
+  <div class="w-auto lg:w-1/2 pt-5">
+    <%= form_with model: [space, item], builder: TailwindBuilder do |form| %>
+      <div class="relative my-8 border-b-2 focus-within:border-blue-500">
+        <%= form.text_field :description, placeholder: " " %>
+        <%= form.label :description %>
+      </div>
+      <div class="relative my-8 border-b-2 focus-within:border-blue-500">
+        <%= form.number_field :actual_quantity, placeholder: " " %>
+        <%= form.label :actual_quantity %>
+      </div>
+      <div class="relative my-8 border-b-2 focus-within:border-blue-500">
+        <%= form.number_field :expected_quantity, placeholder: " " %>
+        <%= form.label :expected_quantity %>
+      </div>
+      <div class="flex my-8 items-center justify-between">
+        <%= form.label :supplier_id, class: "relative", style: "top: 0px; transform: none !important;" %>
+        <%= form.select(:supplier_id,
+                        space.suppliers.pluck(:name, :id),
+                        {},
+                        { data:     { controller:  "slim-select",
+                                      placeholder: t('actions.search'),
+                                      "no-result": t('alert.none', class_name: t('user', scope: 'activerecord.models').pluralize.downcase)  },
+                          class:    "w-full lg:w-1/2 ml-6" }) %>
+      </div>
+      <div class="field">
+        <%= form.hidden_field :user_id, value: current_user&.id %>
+        <%= form.submit t('actions.submit') %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

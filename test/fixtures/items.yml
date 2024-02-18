@@ -1,13 +1,17 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 default:
-  name: MyString
+  description: MyString
   reference: MyString
   supplier: default
   space: default
+  actual_quantity: 1
+  expected_quantity: 100
 
 alternative:
-  name: MyString
+  description: MyString
   reference: MyString
   supplier: alternative
   space: alternative
+  actual_quantity: 100
+  expected_quantity: 100

@@ -1,5 +1,5 @@
 <%= turbo_frame_tag :space do %>
-  <%= render "spaces/tabs", space: %>
+  <%= render "spaces/header", space: %>
 
   <div class="w-auto lg:w-1/2 pt-5">
     <%= form_with model: [space, supplier], builder: TailwindBuilder do |form| %>

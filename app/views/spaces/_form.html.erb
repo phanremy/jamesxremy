@@ -1,6 +1,6 @@
-<%= turbo_frame_tag :content do %>
+<%= turbo_frame_tag :space do %>
   <div class="w-auto lg:w-1/2">
-    <%= form_with model: @space, builder: TailwindBuilder do |form| %>
+    <%= form_with model: @space, builder: TailwindBuilder, data: { turbo: false } do |form| %>
       <div class="relative my-8 border-b-2 focus-within:border-blue-500">
         <%= form.text_field :description, placeholder: " " %>
         <%= form.label :description %>

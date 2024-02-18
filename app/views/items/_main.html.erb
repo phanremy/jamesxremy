@@ -1,0 +1,13 @@
+<%= turbo_frame_tag :space do %>
+  <%= render "spaces/header", space: %>
+  <% if can? :manage, item %>
+    <div class="flex">
+      <%= link_to t('actions.edit'), edit_space_item_path(item, space_id: space.id), class: "text-blue-400 hover:text-blue-500 hover:underline" %>
+       | <%= button_to t('actions.delete'), space_item_path(item, space_id: space.id), method: :delete, form: { data: { turbo_confirm: t('items.destroy_confirm') } }, class: "text-red-400 hover:text-red-500 hover:underline" %>
+    </div>
+  <% end %>
+  <%= item.description %>
+  <br> <%= item.supplier.name %>
+  <br> <%= item.actual_quantity %>
+  <br> <%= item.expected_quantity %>
+<% end %>

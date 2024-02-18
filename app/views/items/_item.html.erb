@@ -1,0 +1,8 @@
+<%= link_to space_item_path(item, space_id: space.id) do %>
+  <div class="w-full text-center bg-transparent my-5 py-5 px-5 border rounded hover:bg-blue-500 hover:text-white hover:border-transparent">
+    <%= item.description %>
+    <br> <%= item.supplier.name %>
+    <br> <%= item.actual_quantity %>
+    <br> <%= item.expected_quantity %>
+  </div>
+<% end %>
