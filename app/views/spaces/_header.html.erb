@@ -4,6 +4,7 @@
     <% %w[spaces orders items suppliers].each do |tab| %>
       <li class="me-2">
         <% link = '#' %>
+        <% link = space_orders_path(space_id: space.id) if tab == 'orders' %>
         <% link = space_items_path(space_id: space.id) if tab == 'items' %>
         <% link = space_suppliers_path(space_id: space.id) if tab == 'suppliers' %>
         <% link = space_path(id: space.id) if tab == 'spaces' %>

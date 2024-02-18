@@ -22,7 +22,8 @@ class Link < ApplicationRecord
 
   def set_attributes
     self.end_date = DateTime.now + 6.months
-    self.sku = generate_sku(excluded: Link.pluck(:sku))
+    sku = "#{space.description.parameterize}-#{generate_sku(excluded: Link.pluck(:sku))}"
+    self.sku = sku
   end
 
   def genuine?

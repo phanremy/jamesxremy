@@ -1,0 +1,12 @@
+<%= turbo_frame_tag :space do %>
+  <%= render "spaces/header", space: %>
+
+  <div class="w-auto lg:w-1/2 pt-5">
+    <%= form_with model: [space, order], builder: TailwindBuilder do |form| %>
+      <div class="field">
+        <%= form.hidden_field :user_id, value: current_user&.id %>
+        <%= form.submit t('actions.submit') %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

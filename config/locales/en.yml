@@ -44,6 +44,11 @@ en:
   orders:
     index:
       tab: Purchase Orders
+    new: New Purchase Order
+    create_success: Purchase Order was successfully created!
+    destroy_confirm: Are you sure? Deleting a Purchase Order is permanent.
+    destroy_success: Purchase Order was successfully deleted.
+    update_success: Purchase Order was successfully updated!
   posts:
     new: New Post
     create_success: Post was successfully created!
