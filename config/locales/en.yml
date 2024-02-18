@@ -1,4 +1,8 @@
 en:
+  date:
+    formats:
+      fr_long: "%A %e %B %Y"
+      fr_short: "%e %B %Y"
   actions:
     delete: Delete
     edit: Edit

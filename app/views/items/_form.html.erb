@@ -18,11 +18,11 @@
       <div class="flex my-8 items-center justify-between">
         <%= form.label :supplier_id, class: "relative", style: "top: 0px; transform: none !important;" %>
         <%= form.select(:supplier_id,
-                        space.suppliers.pluck(:name, :id),
+                        space.suppliers.order(:name).pluck(:name, :id),
                         {},
                         { data:     { controller:  "slim-select",
                                       placeholder: t('actions.search'),
-                                      "no-result": t('alert.none', class_name: t('user', scope: 'activerecord.models').pluralize.downcase)  },
+                                      "no-result": t('alert.none', class_name: t('supplier', scope: 'activerecord.models').pluralize.downcase)  },
                           class:    "w-full lg:w-1/2 ml-6" }) %>
       </div>
       <div class="field">

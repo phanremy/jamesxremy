@@ -68,7 +68,7 @@ class SuppliersController < ApplicationController
   end
 
   def supplier_params
-    params.require(:supplier).permit(:name)
+    params.require(:supplier).permit(:name, :expected_day, :expected_week, :expected_month)
   end
 
   def set_spaces

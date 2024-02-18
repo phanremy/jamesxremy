@@ -52,9 +52,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_17_081823) do
 
   create_table "orders", force: :cascade do |t|
     t.bigint "space_id", null: false
+    t.bigint "supplier_id", null: false
+    t.datetime "expected_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["space_id"], name: "index_orders_on_space_id"
+    t.index ["supplier_id"], name: "index_orders_on_supplier_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -89,6 +92,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_17_081823) do
   create_table "suppliers", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.bigint "space_id", null: false
+    t.integer "expected_day", default: 0, null: false
+    t.integer "expected_week", default: 0, null: false
+    t.integer "expected_month", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["space_id"], name: "index_suppliers_on_space_id"
@@ -115,6 +121,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_17_081823) do
   add_foreign_key "order_items", "items"
   add_foreign_key "order_items", "orders"
   add_foreign_key "orders", "spaces"
+  add_foreign_key "orders", "suppliers"
   add_foreign_key "posts", "users"
   add_foreign_key "space_users", "spaces"
   add_foreign_key "space_users", "users"

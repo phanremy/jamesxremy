@@ -1,5 +1,6 @@
 <%= link_to space_supplier_path(supplier, space_id: space.id) do %>
   <div class="w-full text-center bg-transparent my-5 py-5 px-5 border rounded hover:bg-blue-500 hover:text-white hover:border-transparent">
     <%= supplier.name %>
+    <br> Delivery in <%= supplier.delivery_time.inspect %>
   </div>
 <% end %>

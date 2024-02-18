@@ -7,6 +7,18 @@
         <%= form.text_field :name, placeholder: " " %>
         <%= form.label :name %>
       </div>
+      <div class="relative my-8 border-b-2 focus-within:border-blue-500">
+        <%= form.number_field :expected_day, placeholder: " " %>
+        <%= form.label :expected_day %>
+      </div>
+      <div class="relative my-8 border-b-2 focus-within:border-blue-500">
+        <%= form.number_field :expected_week, placeholder: " " %>
+        <%= form.label :expected_week %>
+      </div>
+      <div class="relative my-8 border-b-2 focus-within:border-blue-500">
+        <%= form.number_field :expected_month, placeholder: " " %>
+        <%= form.label :expected_month %>
+      </div>
       <div class="field">
         <%= form.hidden_field :user_id, value: current_user&.id %>
         <%= form.submit t('actions.submit') %>

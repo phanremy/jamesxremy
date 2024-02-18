@@ -68,7 +68,7 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit()
+    params.require(:order).permit(:supplier_id)
   end
 
   def set_spaces
