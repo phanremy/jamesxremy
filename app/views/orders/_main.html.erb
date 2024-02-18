@@ -10,12 +10,14 @@
   <br>
   <br>Supplier: <%= order.supplier.name %>
   <br>
+  <br>Request date: <%= l order.created_at.to_date, format: :fr_long %>
+  <br>
   <br>Expected date: <%= l order.expected_date.to_date, format: :fr_long %>
   <br>
   <br>Product list:
   <ol>
-    <% order.order_items.each do |order_item| %>
-      <li>☑️ <%= order_item.item.description %> - quantity: <%= order_item.quantity %></li>
+    <% order.order_items.each_with_index do |order_item, index| %>
+      <li><%= index + 1 %> - <%= order_item.item.description %> - quantity: <%= order_item.quantity %></li>
     <% end %>
   </ol>
 <% end %>

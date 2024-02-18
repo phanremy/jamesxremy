@@ -35,8 +35,8 @@ _post2 = Post.create(title: 'Admin\'s first post', body: 'This is the first post
 #               body: generate_sku(excluded: Space.pluck(:description)))
 # end
 
-space1 = Space.create(owner: creator, description: 'My Space', user_ids: [member1.id])
-_space2 = Space.create(owner: creator, description: 'My Space', user_ids: [])
+space1 = Space.create(owner: creator, description: 'Mon Restaurant', user_ids: [member1.id])
+_space2 = Space.create(owner: creator, description: 'Mon Restaurant', user_ids: [])
 
 # 100.times.each do |time|
 #   Space.create(owner: [superadmin, admin, creator, member1, member2].sample,
@@ -46,17 +46,17 @@ _space2 = Space.create(owner: creator, description: 'My Space', user_ids: [])
 
 Link.create(space: space1, owner: creator)
 
-3.times.each do |time|
+2.times.each do |time|
   Supplier.create(name: Faker::Company.name.split(/[ ,]/).first,
                   space: space1,
                   expected_day: (1..6).to_a.sample,
-                  expected_week: 0,
+                  expected_week: (0..1).to_a.sample,
                   expected_month: 0)
 end
 
 supplier_ids = Supplier.pluck(:id)
 
-30.times.each do |time|
+10.times.each do |time|
   Item.create(description: Faker::Food.ingredient,
               space: space1,
               supplier_id: supplier_ids.sample,
@@ -64,6 +64,6 @@ supplier_ids = Supplier.pluck(:id)
               expected_quantity: (2..100).to_a.sample)
 end
 
-Supplier.all.each do |supplier|
-  Order.create(space: space1, supplier:)
-end
+# Supplier.all.each do |supplier|
+#   Order.create(space: space1, supplier:)
+# end
