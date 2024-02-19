@@ -6,15 +6,15 @@
        | <%= button_to t('actions.delete'), space_order_path(order, space_id: space.id), method: :delete, form: { data: { turbo_confirm: t('orders.destroy_confirm') } }, class: "text-red-400 hover:text-red-500 hover:underline" %>
     </div>
   <% end %>
-  <br>Purchase Order #<%= order.id %>
+  <br><%= t('order', scope: 'activerecord.models') %> #<%= order.id %>
   <br>
-  <br>Supplier: <%= order.supplier.name %>
+  <br><%= t('supplier', scope: 'activerecord.attributes.item') %>: <%= order.supplier.name %>
   <br>
-  <br>Request date: <%= l order.created_at.to_date, format: :fr_long %>
+  <br><%= t('created_at', scope: 'activerecord.attributes.order') %>: <%= l order.created_at.to_date, format: :fr_long %>
   <br>
-  <br>Expected date: <%= l order.expected_date.to_date, format: :fr_long %>
+  <br><%= t('expected_date', scope: 'activerecord.attributes.order') %>: <%= l order.expected_date.to_date, format: :fr_long %>
   <br>
-  <br>Product list:
+  <br><%= t('orders.index.product_list') %>:
   <ol>
     <% order.order_items.each_with_index do |order_item, index| %>
       <li><%= index + 1 %> - <%= order_item.item.description %> - quantity: <%= order_item.quantity %></li>

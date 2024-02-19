@@ -1,7 +1,8 @@
-<%= turbo_frame_tag item, class: 'table-row-group' do %>
+<%#= turbo_frame_tag item, class: 'table-row-group' do %>
+<div class="table-row-group">
   <div class="<%= class_names('table-row', local_assigns[:item_counter]&.odd? ? 'bg-white' : 'bg-gray-50') %>">
     <div class="table-cell px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900">
-      <%= item.description %>
+      <%= link_to item.description, space_item_path(item, space_id: space.id), class: "hover:text-blue-900" %>
     </div>
 
     <div class="table-cell px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
@@ -32,4 +33,5 @@
       <% end %>
     </div>
   </div>
-<% end %>
+</div>
+<%# end %>

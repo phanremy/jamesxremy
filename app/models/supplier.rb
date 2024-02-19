@@ -7,7 +7,7 @@ class Supplier < ApplicationRecord
 
   validates :name, presence: true, uniqueness: { scope: :space_id }
 
-  def delivery_time
+  def delivery_duration
     expected_day.day +
       expected_week.week +
       expected_month.month

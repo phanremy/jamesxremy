@@ -7,5 +7,5 @@
     </div>
   <% end %>
   <%= supplier.name %>
-  <br> Delivery in <%= supplier.delivery_time.inspect %>
+  <br> <%= t('suppliers.index.delivery_duration') %> <%= supplier.delivery_duration.inspect %>
 <% end %>

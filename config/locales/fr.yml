@@ -26,6 +26,14 @@ fr:
     gap: …
     next: Suivant
     prev: Préc.
+  items:
+    index:
+      tab: Produits
+    new: Nouveau Produit
+    create_success: Le produit a été créé avec succès !
+    destroy_confirm: Êtes-vous sûr ? La suppression d'un produit est définitive.
+    destroy_success: Le produit a été supprimé avec succès.
+    update_success: Le produit a été mis à jour avec succès !
   links:
     description: Un lien temporaire à partager avec de nouveaux membres
     available_until: Disponible jusqu'au %{date}
@@ -33,14 +41,24 @@ fr:
     create_success: Le lien a été créé avec succès !
     destroy_success: Le lien a été supprimé avec succès.
     show_failure: Lien incorrect
+  orders:
+    index:
+      product_list: Liste de(s) produit(s)
+      tab: Bon De Commande
+    new: Nouveau Bon de Commande
+    create_success: Le bon de commande a été créé avec succès !
+    destroy_confirm: Êtes-vous sûr ? La suppression d'un bon de commande est définitive.
+    destroy_success: Le bon de commande a été supprimé avec succès.
+    update_success: Le bon de commande a été mis à jour avec succès !
   posts:
-    new: Nouveau post
-    create_success: Le post a été créé avec succès !
-    destroy_confirm: Êtes-vous sûr ? La suppression d'un post est définitive.
-    destroy_success: Le post a été supprimé avec succès.
-    update_success: Le post a été mis à jour avec succès !
+    new: Nouveau poste
+    create_success: Le poste a été créé avec succès !
+    destroy_confirm: Êtes-vous sûr ? La suppression d'un poste est définitive.
+    destroy_success: Le poste a été supprimé avec succès.
+    update_success: Le poste a été mis à jour avec succès !
   spaces:
     index:
+      tab: Paramètres
       title: Restaurants
     new: Nouveau restaurant
     create_success: Le restaurant a été créé avec succès !
@@ -53,6 +71,15 @@ fr:
       form:
         new_user_description: Créez un compte et devenez membre de %{space_name}
         existing_user_description: Devenez membre de %{space_name}
+  suppliers:
+    index:
+      delivery_duration: Livraison dans
+      tab: Fournisseurs
+    new: Nouveau Fournisseur
+    create_success: Le fournisseur a été créé avec succès !
+    destroy_confirm: Êtes-vous sûr ? La suppression d'un fournisseur est définitive.
+    destroy_success: Le fournisseur a été supprimé avec succès.
+    update_success: Le fournisseur a été mis à jour avec succès !
   users:
     index:
       title: Utilisateurs
@@ -63,6 +90,7 @@ fr:
     destroy_success: L'utilisateur a été supprimé avec succès.
     not_confirmed: En attente de confirmation
     update_success: L'utilisateur a été mis à jour avec succès !
+
   date:
     formats:
       fr_long: "%A %e %B %Y"
@@ -70,14 +98,31 @@ fr:
 
   activerecord:
     models:
-     space: Restaurant
-     post: Poste
-     user: Utilisateur
+      item: Produit
+      order: Bon de Commande
+      post: Poste
+      space: Restaurant
+      supplier: Fournisseur
+      user: Utilisateur
 
     attributes:
+      item:
+        description: Reference
+        supplier_id: Fournisseur
+        actual_quantity:  Qté actuel
+        expected_quantity: Qté prévu
+        difference: Qté actuel - prévu
+      order:
+        created_at: Date de commande
+        expected_date: Date de livraison prévu
       space:
-        owner: Admin
+        owner_id: Admin
         users: Membres
+      supplier:
+        name: Nom
+        expected_day: Nb de Jours prévus
+        expected_week: Nb de Semaines prévues
+        expected_month: Nb de Mois prévus
       user:
         admin: Admin
         confirmed: Confirmé(e)

@@ -1,8 +1,4 @@
 en:
-  date:
-    formats:
-      fr_long: "%A %e %B %Y"
-      fr_short: "%e %B %Y"
   actions:
     delete: Delete
     edit: Edit
@@ -47,6 +43,7 @@ en:
     show_failure: Incorrect link
   orders:
     index:
+      product_list: Product List
       tab: Purchase Orders
     new: New Purchase Order
     create_success: Purchase Order was successfully created!
@@ -61,7 +58,7 @@ en:
     update_success: Post was successfully updated!
   spaces:
     index:
-      tab: Home
+      tab: Settings
       title: Restaurants
     new: New Restaurant
     create_success: Restaurant was successfully created!
@@ -76,6 +73,7 @@ en:
         existing_user_description: Become a member of %{space_name}
   suppliers:
     index:
+      delivery_duration: Delivery in
       tab: Suppliers
     new: New Supplier
     create_success: Supplier was successfully created!
@@ -92,6 +90,7 @@ en:
     destroy_success: User was successfully deleted.
     not_confirmed: Pending confirmation
     update_success: User was successfully updated!
+
   date:
     formats:
       fr_long: "%A %e %B %Y"
@@ -99,17 +98,31 @@ en:
 
   activerecord:
     models:
-     space: Restaurant
-     supplier: Supplier
-     item: Product
-     order: Purchase Order
-     post: Post
-     user: User
+      item: Product
+      order: Purchase Order
+      post: Post
+      space: Restaurant
+      supplier: Supplier
+      user: User
 
     attributes:
+      item:
+        description: Reference
+        supplier_id: Supplier
+        actual_quantity: Actual qty
+        expected_quantity: Expected qty
+        difference: Actual - Expected qty
+      order:
+        created_at: Request date
+        expected_date: Expected date
       space:
-        owner: Admin
+        owner_id: Admin
         users: Members
+      supplier:
+        name: Name
+        expected_day: Number of expected Day
+        expected_week: Number of expected Week
+        expected_month: Number of expected Month
       user:
         admin: Admin
         confirmed: Confirmed
