@@ -5,10 +5,10 @@
   <% end %>
 </div>
 <div class="py-5">
-  <%= t('owner_id', scope: 'activerecord.attributes.space') %>: <%= space.owner.email %>
+  <%= t('owner_id', scope: 'activerecord.attributes.space') %> : <%= space.owner.email %>
 </div>
 <div class="py-5">
-  <%= t('users', scope: 'activerecord.attributes.space') %>:
+  <%= t('users', scope: 'activerecord.attributes.space') %> :
   <% space.users.order(confirmed: :desc).each do |user| %>
     <br><%= user.email %> <%= "(#{t('users.not_confirmed')})" if space.unconfirmed_member?(user) %>
   <% end %>

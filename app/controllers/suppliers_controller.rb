@@ -15,7 +15,10 @@ class SuppliersController < ApplicationController
     @supplier = @space.suppliers.build
   end
 
-  def show; end
+  def show
+    @items = @supplier.items
+    @pagy, @items = pagy(@items, items: 20)
+  end
 
   def create
     @supplier = @space.suppliers.build(supplier_params)

@@ -5,6 +5,7 @@ class CreateItems < ActiveRecord::Migration[7.1]
     create_table :items do |t|
       t.string :description, null: false, default: ''
       t.string :reference, null: false, default: ''
+      t.decimal :price, null: false, default: 0
       t.decimal :actual_quantity, null: false, default: 0
       t.decimal :expected_quantity, null: false, default: 0
       t.references :supplier, null: false, foreign_key: true

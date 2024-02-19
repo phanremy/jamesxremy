@@ -4,45 +4,5 @@
   <%= link_to t('items.new'), new_space_item_path(space_id: @space.id), class: "text-center bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" %>
   <br><br>
 
-  <% if @items.count.zero? %>
-    <p><%= t('alert.none', class_name: t('item', scope: 'activerecord.models').pluralize.downcase) %></p>
-  <% else %>
-    <%== render partial: 'shared/pagy/nav', locals: { pagy: @pagy } %>
-    <div class="flex flex-col">
-      <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-          <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-            <div class="min-w-full divide-y divide-gray-200 table">
-              <div class="table-row">
-                <div class="table-cell px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                  <%= t('description', scope: 'activerecord.attributes.item') %>
-                </div>
-
-                <div class="table-cell px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                  <%= t('supplier', scope: 'activerecord.attributes.item') %>
-                </div>
-
-                <div class="table-cell px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                  <%= t('actual_quantity', scope: 'activerecord.attributes.item') %>
-                </div>
-
-                <div class="table-cell px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                  <%= t('expected_quantity', scope: 'activerecord.attributes.item') %>
-                </div>
-
-                <div class="table-cell px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                  <%= t('difference', scope: 'activerecord.attributes.item') %>
-                </div>
-
-                <div class="table-cell bg-gray-50"></div>
-              </div>
-
-              <%= render @items, space: @space %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <%== render partial: 'shared/pagy/nav', locals: { pagy: @pagy } %>
-  <% end %>
+  <%= render 'items/table', items: @items, space: @space, pagy: @pagy %>
 <% end %>

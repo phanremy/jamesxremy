@@ -68,7 +68,7 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:description, :supplier_id)
+    params.require(:item).permit(:description, :reference, :price, :expected_quantity, :actual_quantity, :supplier_id)
   end
 
   def set_spaces

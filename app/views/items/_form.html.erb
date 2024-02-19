@@ -8,11 +8,19 @@
         <%= form.label :description %>
       </div>
       <div class="relative my-8 border-b-2 focus-within:border-blue-500">
-        <%= form.number_field :actual_quantity, placeholder: " " %>
+        <%= form.text_field :reference, placeholder: " " %>
+        <%= form.label :reference %>
+      </div>
+      <div class="relative my-8 border-b-2 focus-within:border-blue-500">
+        <%= form.number_field :price, step: :any, placeholder: " " %>
+        <%= form.label :price %>
+      </div>
+      <div class="relative my-8 border-b-2 focus-within:border-blue-500">
+        <%= form.number_field :actual_quantity, step: :any, placeholder: " " %>
         <%= form.label :actual_quantity %>
       </div>
       <div class="relative my-8 border-b-2 focus-within:border-blue-500">
-        <%= form.number_field :expected_quantity, placeholder: " " %>
+        <%= form.number_field :expected_quantity, step: :any, placeholder: " " %>
         <%= form.label :expected_quantity %>
       </div>
       <div class="flex my-8 items-center justify-between">

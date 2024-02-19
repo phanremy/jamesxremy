@@ -7,7 +7,10 @@
     </div>
   <% end %>
   <%= item.description %>
-  <br> <%= item.supplier.name %>
-  <br> <%= item.actual_quantity %>
-  <br> <%= item.expected_quantity %>
+  <br> <%= t('reference', scope: 'activerecord.attributes.item') %> : <%= item.reference %>
+  <br> <%= t('supplier_id', scope: 'activerecord.attributes.item') %> : <%= item.supplier.name %>
+  <br> <%= t('price', scope: 'activerecord.attributes.item') %> : <%= item.price %> €
+  <br> <%= t('actual_quantity', scope: 'activerecord.attributes.item') %> : <%= item.actual_quantity %>
+  <br> <%= t('expected_quantity', scope: 'activerecord.attributes.item') %> : <%= item.expected_quantity %>
+  <br> <%= t('variance_quantity', scope: 'activerecord.attributes.item') %> : <%= item.variance_quantity %>
 <% end %>

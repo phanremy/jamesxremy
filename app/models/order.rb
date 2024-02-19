@@ -20,4 +20,8 @@ class Order < ApplicationRecord
                     supplier.expected_week.week + supplier.expected_month.month
     self.expected_date = expected_date
   end
+
+  def price
+    order_items.map { |o_i| o_i.quantity * o_i.item.price }.compact.sum
+  end
 end

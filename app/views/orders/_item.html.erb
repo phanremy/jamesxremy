@@ -1,0 +1,19 @@
+<div class="table-row-group">
+  <div class="<%= class_names('table-row', index&.odd? ? 'bg-white' : 'bg-gray-50') %>">
+    <div class="table-cell px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900">
+      <%= index + 1 %>.
+    </div>
+
+    <div class="table-cell px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
+      <%= item.description %>
+    </div>
+
+    <div class="table-cell px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
+      <%= t('quantity', scope: 'activerecord.attributes.order_item') %> : <%= quantity %>
+    </div>
+
+    <div class="table-cell px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
+      <%= t('price', scope: 'activerecord.attributes.item') %> : <%= item.price %> €
+    </div>
+  </div>
+</div>

@@ -17,6 +17,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_17_081823) do
   create_table "items", force: :cascade do |t|
     t.string "description", default: "", null: false
     t.string "reference", default: "", null: false
+    t.decimal "price", default: "0.0", null: false
     t.decimal "actual_quantity", default: "0.0", null: false
     t.decimal "expected_quantity", default: "0.0", null: false
     t.bigint "supplier_id", null: false

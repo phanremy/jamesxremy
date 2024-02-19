@@ -107,14 +107,19 @@ fr:
 
     attributes:
       item:
-        description: Reference
+        description: Nom
+        reference: ID
         supplier_id: Fournisseur
+        price: Prix
         actual_quantity:  Qté actuel
         expected_quantity: Qté prévu
-        difference: Qté actuel - prévu
+        variance_quantity: Qté actuel - prévu
       order:
+        price: Prix Total
         created_at: Date de commande
         expected_date: Date de livraison prévu
+      order_item:
+        quantity: Qté
       space:
         owner_id: Admin
         users: Membres

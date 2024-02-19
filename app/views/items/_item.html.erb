@@ -6,7 +6,15 @@
     </div>
 
     <div class="table-cell px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
+      <%= item.reference %>
+    </div>
+
+    <div class="table-cell px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
       <%= item.supplier.name %>
+    </div>
+
+    <div class="table-cell px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
+      <%= item.price %> €
     </div>
 
     <div class="table-cell px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
@@ -18,9 +26,8 @@
     </div>
 
     <div class="table-cell px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
-      <% difference = item.expected_quantity - item.actual_quantity %>
-      <span class="items-center px-2.5 py-0.5 rounded-full text-xs font-medium leading-4 <%= difference.positive? ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' %>">
-        <%= difference %>
+      <span class="items-center px-2.5 py-0.5 rounded-full text-xs font-medium leading-4 <%= item.variance_quantity.positive? ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' %>">
+        <%= item.variance_quantity %>
       </span>
       <%=  %>
     </div>

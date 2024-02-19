@@ -58,8 +58,10 @@ supplier_ids = Supplier.pluck(:id)
 
 10.times.each do |time|
   Item.create(description: Faker::Food.ingredient,
+              reference: (10000..99999).to_a.sample,
               space: space1,
               supplier_id: supplier_ids.sample,
+              price: (10..99).to_a.sample.fdiv(10),
               actual_quantity: (2..100).to_a.sample,
               expected_quantity: (2..100).to_a.sample)
 end

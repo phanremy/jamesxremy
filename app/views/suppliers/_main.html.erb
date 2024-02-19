@@ -8,4 +8,6 @@
   <% end %>
   <%= supplier.name %>
   <br> <%= t('suppliers.index.delivery_duration') %> <%= supplier.delivery_duration.inspect %>
+  <br><br>
+  <%= render 'items/table', items: @items, space: supplier.space, pagy: @pagy %>
 <% end %>

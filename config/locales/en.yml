@@ -107,14 +107,19 @@ en:
 
     attributes:
       item:
-        description: Reference
+        description: Name
+        reference: ID
         supplier_id: Supplier
+        price: Price
         actual_quantity: Actual qty
         expected_quantity: Expected qty
-        difference: Actual - Expected qty
+        variance_quantity: Actual - Expected qty
       order:
+        price: Total Price
         created_at: Request date
         expected_date: Expected date
+      order_item:
+        quantity: Qty
       space:
         owner_id: Admin
         users: Members
