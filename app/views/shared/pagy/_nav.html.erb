@@ -5,6 +5,7 @@
   The link variable is set to a proc that returns the link tag.
   Usage: link.call( page_number [, text [, extra_attributes_string ]])
 -%>
+<% return unless pagy %>
 <% return if pagy.pages == 1 %>
 
 <% link = pagy_link_proc(pagy) -%>

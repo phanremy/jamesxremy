@@ -46,7 +46,7 @@ _space2 = Space.create(owner: creator, description: 'Mon Restaurant', user_ids: 
 
 Link.create(space: space1, owner: creator)
 
-2.times.each do |time|
+100.times.each do |time|
   Supplier.create(name: Faker::Company.name.split(/[ ,]/).first,
                   space: space1,
                   expected_day: (1..6).to_a.sample,
@@ -56,7 +56,7 @@ end
 
 supplier_ids = Supplier.pluck(:id)
 
-10.times.each do |time|
+100.times.each do |time|
   Item.create(description: Faker::Food.ingredient,
               reference: (10000..99999).to_a.sample,
               space: space1,
@@ -66,6 +66,6 @@ supplier_ids = Supplier.pluck(:id)
               expected_quantity: (2..100).to_a.sample)
 end
 
-# Supplier.all.each do |supplier|
-#   Order.create(space: space1, supplier:)
-# end
+Supplier.all.each do |supplier|
+  Order.create(space: space1, supplier:)
+end

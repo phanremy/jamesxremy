@@ -5,7 +5,7 @@ class PurchasesController < ApplicationController
   before_action :set_order
 
   def create
-    if @order.update(status: :delivered)
+    if @order.transaction(status: :delivered)
       flash.now[:success] = I18n.t('purchases.create_success')
       render_space_show
     else
@@ -14,7 +14,7 @@ class PurchasesController < ApplicationController
   end
 
   def update
-    if @order.update(status: :pending)
+    if @order.transaction(status: :pending)
       flash.now[:success] = I18n.t('purchases.update_success')
       render_space_show
     else

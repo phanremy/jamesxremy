@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Order < ApplicationRecord
+  include Orders::Transaction
+
   belongs_to :space
   belongs_to :supplier
   has_many :order_items, dependent: :destroy
@@ -12,12 +14,12 @@ class Order < ApplicationRecord
 
   validates :status, inclusion: { in: statuses.keys, allow_blank: true }
 
-  before_save :build_order_items, :set_expected_at
+  before_save :build_order_items, :set_expected_at, if: :new_record?
 
   def build_order_items
-    items = supplier.items.where("items.expected_quantity < items.actual_quantity")
+    items = supplier.items.where("items.expected_quantity > items.actual_quantity")
     self.order_items = items.map do |item|
-      order_items.build(item:, quantity: item.actual_quantity - item.expected_quantity)
+      order_items.build(item:, quantity: item.expected_quantity - item.actual_quantity)
     end
   end
 
