@@ -45,6 +45,7 @@ fr:
     index:
       product_list: Liste de(s) produit(s)
       tab: Bon De Commande
+      see: Voir
     status:
       pending: En attente
       cancelled: Annulée
@@ -60,6 +61,10 @@ fr:
     destroy_confirm: Êtes-vous sûr ? La suppression d'un poste est définitive.
     destroy_success: Le poste a été supprimé avec succès.
     update_success: Le poste a été mis à jour avec succès !
+  purchases:
+    create_success: La Commande a été livrée avec succès (et ne peut plus être modifié)
+    update_success: Le status de la Commande a été modifié.
+    destroy_success: La Commande a été annulée.
   spaces:
     index:
       tab: Paramètres

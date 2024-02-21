@@ -1,5 +1,46 @@
-<%= link_to space_order_path(order, space_id: space.id) do %>
-  <div class="w-full text-center bg-transparent my-5 py-5 px-5 border rounded hover:bg-blue-500 hover:text-white hover:border-transparent">
-    #<%= order.id %> - <%= order.supplier.name %> - <%= l order.created_at.to_date, format: :fr_long %>
+<%#= turbo_frame_tag order, class: 'table-row-group' do %>
+<div class="table-row-group">
+  <div class="<%= class_names('table-row', local_assigns[:order_counter]&.odd? ? 'bg-white' : 'bg-gray-50') %>">
+    <div class="table-cell px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900">
+      <%= link_to order.id, space_order_path(order, space_id: space.id), class: "hover:text-blue-900" %>
+    </div>
+
+    <div class="table-cell px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
+      <span class="items-center px-2.5 py-0.5 rounded-full text-xs font-medium leading-4 <%= order_status_color(order) %>">
+        <%= order.status %>
+      </span>
+    </div>
+
+    <div class="table-cell px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
+      <%= order.supplier.name %>
+    </div>
+
+    <div class="table-cell px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
+      <%= date(order.created_at) %>
+    </div>
+
+    <div class="table-cell px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
+      <%= date(order.expected_at) %>
+    </div>
+
+    <div class="table-cell px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
+      <%= date(order.delivered_at) %>
+    </div>
+
+    <div class="table-cell px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
+      <%= order.price %> €
+    </div>
+
+    <div class="table-cell px-2 py-2 whitespace-no-wrap text-right text-sm leading-5 font-medium">
+      <div class="flex items-center justify-center">
+        <%= link_to edit_space_order_path(order, space_id: space.id), class: 'text-blue-600 hover:text-blue-900', data: { turbo_frame: '_top' } do %>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="inline w-5 h-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+          </svg>
+        <% end %>
+        <%= link_to t('orders.index.see'), space_order_path(order, space_id: space.id), class: "text-center bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 ml-6 border border-blue-500 hover:border-transparent rounded" %>
+      </div>
+    </div>
   </div>
-<% end %>
+</div>
+<%# end %>

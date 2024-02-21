@@ -14,6 +14,9 @@ Rails.application.routes.draw do
       resources :suppliers
       resources :orders
     end
+    resources :orders, only: %i[] do
+      resource :purchases, only: %i[create update destroy]
+    end
     resources :links, only: %i[show create destroy], param: :sku
     resources :users, only: %i[index edit update destroy]
     get '/open-modal', to: 'pages#open_modal', as: 'open_modal'
