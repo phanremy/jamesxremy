@@ -8,11 +8,15 @@
   <% end %>
   <br><%= t('order', scope: 'activerecord.models') %> #<%= order.id %>
   <br>
+  <br><%= t('status', scope: 'activerecord.models') %> : <%= t("orders.status.#{order.status}") %>
+  <br>
   <br><%= t('supplier', scope: 'activerecord.attributes.item') %> : <%= order.supplier.name %>
   <br>
   <br><%= t('created_at', scope: 'activerecord.attributes.order') %> : <%= l order.created_at.to_date, format: :fr_long %>
   <br>
   <br><%= t('expected_at', scope: 'activerecord.attributes.order') %> : <%= l order.expected_at.to_date, format: :fr_long %>
+  <br>
+  <br><%= t('delivered_at', scope: 'activerecord.attributes.order') %> : <%= l order.delivered_at.to_date, format: :fr_long if order.delivered_at%>
   <br>
   <br><%= t('orders.index.product_list') %> :
   <ol>

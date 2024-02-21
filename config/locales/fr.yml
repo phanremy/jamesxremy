@@ -45,6 +45,10 @@ fr:
     index:
       product_list: Liste de(s) produit(s)
       tab: Bon De Commande
+    status:
+      pending: En attente
+      cancelled: Annulée
+      delivered: Livrée
     new: Nouveau Bon de Commande
     create_success: Le bon de commande a été créé avec succès !
     destroy_confirm: Êtes-vous sûr ? La suppression d'un bon de commande est définitive.
@@ -73,7 +77,7 @@ fr:
         existing_user_description: Devenez membre de %{space_name}
   suppliers:
     index:
-      delivery_duration: Livraison dans
+      delivery_duration: Livraison théorique dans
       tab: Fournisseurs
     new: Nouveau Fournisseur
     create_success: Le fournisseur a été créé avec succès !
@@ -115,9 +119,11 @@ fr:
         expected_quantity: Qté prévu
         variance_quantity: Qté actuel - prévu
       order:
+        status: Status
         price: Prix Total
         created_at: Date de commande
         expected_at: Date de livraison prévu
+        delivered_at: Date de livraison
       order_item:
         quantity: Qté
       space:

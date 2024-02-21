@@ -6,6 +6,12 @@ class Order < ApplicationRecord
   has_many :order_items, dependent: :destroy
   has_many :items, through: :order_items
 
+  STATUS = %i[pending cancelled delivered].index_with(&:to_s).freeze
+  attribute :status, :string
+  enum status: STATUS
+
+  validates :status, inclusion: { in: statuses.keys, allow_blank: true }
+
   before_save :build_order_items, :set_expected_at
 
   def build_order_items

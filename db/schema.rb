@@ -14,6 +14,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_17_081823) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  # Custom types defined in this database.
+  # Note that some types may not work with other database engines. Be careful if changing database.
+  create_enum "status_list", ["pending", "cancelled", "delivered"]
+
   create_table "items", force: :cascade do |t|
     t.string "description", default: "", null: false
     t.string "reference", default: "", null: false
@@ -55,6 +59,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_17_081823) do
     t.bigint "space_id", null: false
     t.bigint "supplier_id", null: false
     t.datetime "expected_at"
+    t.datetime "delivered_at"
+    t.enum "status", default: "pending", null: false, enum_type: "status_list"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["space_id"], name: "index_orders_on_space_id"

@@ -45,6 +45,10 @@ en:
     index:
       product_list: Product List
       tab: Purchase Orders
+    status:
+      pending: Pending
+      cancelled: Cancelled
+      delivered: Delivered
     new: New Purchase Order
     create_success: Purchase Order was successfully created!
     destroy_confirm: Are you sure? Deleting a Purchase Order is permanent.
@@ -73,7 +77,7 @@ en:
         existing_user_description: Become a member of %{space_name}
   suppliers:
     index:
-      delivery_duration: Delivery in
+      delivery_duration: Delivery theorically in
       tab: Suppliers
     new: New Supplier
     create_success: Supplier was successfully created!
@@ -115,9 +119,11 @@ en:
         expected_quantity: Expected qty
         variance_quantity: Actual - Expected qty
       order:
+        status: Status
         price: Total Price
         created_at: Requested at
         expected_at: Expected at
+        delivered_at: Delivered at
       order_item:
         quantity: Qty
       space:
