@@ -10,7 +10,7 @@ class Link < ApplicationRecord
 
   validates :sku, presence: true, uniqueness: true
   validates :space, uniqueness: { scope: :owner_id }
-  validates :end_date, presence: true
+  validates :expires_at, presence: true
 
   def to_param
     sku
@@ -21,7 +21,7 @@ class Link < ApplicationRecord
   end
 
   def set_attributes
-    self.end_date = DateTime.now + 6.months
+    self.expires_at = DateTime.now + 6.months
     sku = "#{space.description.parameterize}-#{generate_sku(excluded: Link.pluck(:sku))}"
     self.sku = sku
   end
@@ -32,6 +32,6 @@ class Link < ApplicationRecord
       # the owner is a confirmed user
       owner.confirmed? &&
       # the link is not expired
-      (DateTime.now < end_date)
+      (DateTime.now < expires_at)
   end
 end

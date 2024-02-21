@@ -44,7 +44,7 @@ class LinksControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'show - failure' do
-    @link.update!(end_date: DateTime.now - 1.second)
+    @link.update!(expires_at: DateTime.now - 1.second)
     sign_in users(:visitor)
     get link_path(sku: @link.sku)
 

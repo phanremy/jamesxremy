@@ -6,7 +6,7 @@ class CreateLinks < ActiveRecord::Migration[7.0]
       t.string :sku, null: false
       t.references :space, null: false, foreign_key: true
       t.references :owner, index: true, foreign_key: { to_table: :users }, null: false
-      t.datetime :end_date, null: false
+      t.datetime :expires_at, null: false
 
       t.timestamps
     end

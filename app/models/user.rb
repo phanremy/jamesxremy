@@ -21,7 +21,7 @@ class User < ApplicationRecord
   scope :by_confirmed, ->(confirmed) { confirmed.blank? ? return : where(confirmed:) }
 
   def available_link(space)
-    links.where(space:).where('end_date > ?', DateTime.now).first
+    links.where(space:).where('expires_at > ?', DateTime.now).first
   end
 
   protected

@@ -116,8 +116,8 @@ en:
         variance_quantity: Actual - Expected qty
       order:
         price: Total Price
-        created_at: Request date
-        expected_date: Expected date
+        created_at: Requested at
+        expected_at: Expected at
       order_item:
         quantity: Qty
       space:

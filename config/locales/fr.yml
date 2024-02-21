@@ -117,7 +117,7 @@ fr:
       order:
         price: Prix Total
         created_at: Date de commande
-        expected_date: Date de livraison prévu
+        expected_at: Date de livraison prévu
       order_item:
         quantity: Qté
       space:

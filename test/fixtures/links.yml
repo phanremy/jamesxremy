@@ -3,11 +3,11 @@
 default:
   space: default
   owner: creator
-  end_date: <%= DateTime.now + 1.day %>
+  expires_at: <%= DateTime.now + 1.day %>
   sku: default
 
 alternative:
   space: alternative
   owner: creator
-  end_date: <%= DateTime.now + 1.day %>
+  expires_at: <%= DateTime.now + 1.day %>
   sku: alternative

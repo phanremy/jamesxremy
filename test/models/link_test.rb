@@ -13,7 +13,7 @@ class LinkTest < ActiveSupport::TestCase
 
     assert_nil Link.find_by(id: old_link.id)
     assert new_link.sku
-    assert new_link.end_date
+    assert new_link.expires_at
   end
 
   test 'does not update' do
@@ -46,7 +46,7 @@ class LinkTest < ActiveSupport::TestCase
   end
 
   test 'genuine link is expired' do
-    @link.update!(end_date: DateTime.now - 1.second)
+    @link.update!(expires_at: DateTime.now - 1.second)
 
     assert_not @link.genuine?
   end

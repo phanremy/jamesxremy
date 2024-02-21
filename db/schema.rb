@@ -32,7 +32,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_17_081823) do
     t.string "sku", null: false
     t.bigint "space_id", null: false
     t.bigint "owner_id", null: false
-    t.datetime "end_date", null: false
+    t.datetime "expires_at", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["owner_id"], name: "index_links_on_owner_id"
@@ -54,7 +54,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_17_081823) do
   create_table "orders", force: :cascade do |t|
     t.bigint "space_id", null: false
     t.bigint "supplier_id", null: false
-    t.datetime "expected_date"
+    t.datetime "expected_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["space_id"], name: "index_orders_on_space_id"

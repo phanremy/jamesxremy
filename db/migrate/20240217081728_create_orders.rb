@@ -5,7 +5,7 @@ class CreateOrders < ActiveRecord::Migration[7.1]
     create_table :orders do |t|
       t.references :space, null: false, foreign_key: true
       t.references :supplier, null: false, foreign_key: true
-      t.datetime :expected_date
+      t.datetime :expected_at
 
       t.timestamps
     end

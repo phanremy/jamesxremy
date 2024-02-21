@@ -6,7 +6,7 @@ class Order < ApplicationRecord
   has_many :order_items, dependent: :destroy
   has_many :items, through: :order_items
 
-  before_save :build_order_items, :set_expected_date
+  before_save :build_order_items, :set_expected_at
 
   def build_order_items
     items = supplier.items.where("items.expected_quantity < items.actual_quantity")
@@ -15,10 +15,10 @@ class Order < ApplicationRecord
     end
   end
 
-  def set_expected_date
-    expected_date = Date.today + supplier.expected_day.day +
-                    supplier.expected_week.week + supplier.expected_month.month
-    self.expected_date = expected_date
+  def set_expected_at
+    expected_at = Date.today + supplier.expected_day.day +
+                  supplier.expected_week.week + supplier.expected_month.month
+    self.expected_at = expected_at
   end
 
   def price
