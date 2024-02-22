@@ -1,0 +1,19 @@
+<%= turbo_frame_tag :space do %>
+  <%= render "spaces/header", space: %>
+  <% if can? :manage, product %>
+    <div class="flex">
+      <%= link_to t('actions.edit'), edit_space_product_path(product, space_id: space.id), class: "text-blue-400 hover:text-blue-500 hover:underline" %>
+       | <%= button_to t('actions.delete'), space_product_path(product, space_id: space.id), method: :delete, form: { data: { turbo_confirm: t('products.destroy_confirm') } }, class: "text-red-400 hover:text-red-500 hover:underline" %>
+    </div>
+  <% end %>
+  <br>
+  <br><%= t('description', scope: 'activerecord.attributes.product') %> : <%= product.description %>
+  <br>
+  <br><%= t('sales_count', scope: 'activerecord.attributes.product') %> : <%= product.sales_count %>
+  <br>
+  <% product.product_items.each_with_index do |product_item, index| %>
+    <%= render 'products/item', index:, item: product_item.item, quantity: product_item.quantity %>
+  <% end %>
+  <br><br>
+  <%#= render 'items/table', items: @items, space: product.space, pagy: @pagy %>
+<% end %>

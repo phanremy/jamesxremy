@@ -1,0 +1,6 @@
+<%= link_to space_product_path(product, space_id: space.id) do %>
+  <div class="w-full text-center bg-transparent my-5 py-5 px-5 border rounded hover:bg-blue-500 hover:text-white hover:border-transparent">
+    <%= product.description %>
+    <br> <%= product.sales_count %>
+  </div>
+<% end %>

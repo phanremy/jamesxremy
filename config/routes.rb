@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :posts
     resources :spaces do
       resources :users, only: %i[create], controller: 'spaces/users'
+      resources :products
       resources :items
       resources :suppliers
       resources :orders

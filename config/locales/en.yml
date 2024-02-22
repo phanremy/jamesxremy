@@ -61,6 +61,14 @@ en:
     destroy_confirm: Are you sure? Deleting a post is permanent.
     destroy_success: Post was successfully deleted.
     update_success: Post was successfully updated!
+  products:
+    index:
+      tab: Products
+    new: New Product
+    create_success: Product was successfully created!
+    destroy_confirm: Are you sure? Deleting a Product is permanent.
+    destroy_success: Product was successfully deleted.
+    update_success: Product was successfully updated!
   purchases:
     index:
       create: The order is delivered
@@ -114,6 +122,7 @@ en:
       item: Ingredient
       order: Purchase Order
       post: Post
+      product: Product
       space: Restaurant
       supplier: Supplier
       user: User
@@ -134,6 +143,12 @@ en:
         expected_at: Expected at
         delivered_at: Delivered at
       order_item:
+        quantity: Qty
+      product:
+        description: Description
+        price: Price
+        sales_count: Sales Count
+      product_item:
         quantity: Qty
       space:
         owner_id: Admin

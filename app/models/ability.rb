@@ -21,6 +21,7 @@ class Ability
     can :manage, Supplier
     can :manage, Item
     can :manage, Order
+    can :manage, Product
     can %i[create update destroy], :purchase
   end
 

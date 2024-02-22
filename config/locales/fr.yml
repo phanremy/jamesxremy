@@ -61,6 +61,14 @@ fr:
     destroy_confirm: Êtes-vous sûr ? La suppression d'un poste est définitive.
     destroy_success: Le poste a été supprimé avec succès.
     update_success: Le poste a été mis à jour avec succès !
+  products:
+    index:
+      title: Produits
+    new: Nouveau Produit
+    create_success: Le Produit a été créé avec succès !
+    destroy_confirm: Êtes-vous sûr ? La suppression d'un Produit est définitive.
+    destroy_success: Le Produit a été supprimé avec succès.
+    update_success: Le Produit a été mis à jour avec succès !
   purchases:
     create_success: La Commande a été livrée avec succès (et ne peut plus être modifié)
     update_success: Le status de la Commande a été modifié.
@@ -110,6 +118,7 @@ fr:
       item: Produit
       order: Bon de Commande
       post: Poste
+      product: Produit
       space: Restaurant
       supplier: Fournisseur
       user: Utilisateur
@@ -130,6 +139,12 @@ fr:
         expected_at: Date de livraison prévu
         delivered_at: Date de livraison
       order_item:
+        quantity: Qté
+      product:
+        description: Description
+        price: Prix
+        sales_count: Nb de Vente
+      product_item:
         quantity: Qté
       space:
         owner_id: Admin

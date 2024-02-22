@@ -1,0 +1,15 @@
+<%= turbo_frame_tag :space do %>
+  <%= render "spaces/header", space: %>
+
+  <div class="w-auto lg:w-1/2 pt-5">
+    <%= form_with model: [space, product], builder: TailwindBuilder do |form| %>
+      <div class="relative my-8 border-b-2 focus-within:border-blue-500">
+        <%= form.text_field :description, placeholder: " " %>
+        <%= form.label :description %>
+      </div>
+      <div class="field">
+        <%= form.submit t('actions.submit') %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
