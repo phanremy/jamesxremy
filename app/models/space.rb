@@ -9,6 +9,7 @@ class Space < ApplicationRecord
   has_many :items, dependent: :destroy
   has_many :orders, dependent: :destroy
   has_many :suppliers, dependent: :destroy
+  has_many :products, dependent: :destroy
 
   def members
     users.including(owner)

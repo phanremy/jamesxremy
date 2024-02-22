@@ -20,7 +20,6 @@
         <%= form.label :expected_month %>
       </div>
       <div class="field">
-        <%= form.hidden_field :user_id, value: current_user&.id %>
         <%= form.submit t('actions.submit') %>
       </div>
     <% end %>

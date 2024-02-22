@@ -69,3 +69,19 @@ end
 Supplier.all.each do |supplier|
   Order.create(space: space1, supplier:)
 end
+
+100.times.each do |time|
+  Product.create(description: Faker::Food.dish,
+                 space: space1,
+                 price: (100..300).to_a.sample.fdiv(10),
+                 sales_count: (0..99).to_a.sample)
+end
+
+product_ids = Product.pluck(:id)
+item_ids = Item.pluck(:id)
+
+100.times.each do |time|
+  ProductItem.create(product_id: product_ids.sample,
+                     item_id: item_ids.sample,
+                     quantity: (0..3).to_a.sample)
+end

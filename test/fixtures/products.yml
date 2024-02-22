@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+default:
+  description: default
+  price: 9.99
+  space: default
+
+alternative:
+  description: alternative
+  price: 9.99
+  space: default
