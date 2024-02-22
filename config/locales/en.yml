@@ -28,12 +28,12 @@ en:
     prev: Prev
   items:
     index:
-      tab: Products
-    new: New Product
-    create_success: Product was successfully created!
-    destroy_confirm: Are you sure? Deleting a Product is permanent.
-    destroy_success: Product was successfully deleted.
-    update_success: Product was successfully updated!
+      tab: Ingredients
+    new: New Ingredient
+    create_success: Ingredient was successfully created!
+    destroy_confirm: Are you sure? Deleting a Ingredient is permanent.
+    destroy_success: Ingredient was successfully deleted.
+    update_success: Ingredient was successfully updated!
   links:
     description: A temporary link to be shared with new members
     available_until: Available until %{date}
@@ -43,8 +43,9 @@ en:
     show_failure: Incorrect link
   orders:
     index:
-      product_list: Product List
+      product_list: Ingredient List
       tab: Purchase Orders
+      see: See
     status:
       pending: Pending
       cancelled: Cancelled
@@ -87,7 +88,6 @@ en:
     index:
       delivery_duration: Delivery theorically in
       tab: Suppliers
-      see: See
     new: New Supplier
     create_success: Supplier was successfully created!
     destroy_confirm: Are you sure? Deleting a Supplier is permanent.
@@ -111,7 +111,7 @@ en:
 
   activerecord:
     models:
-      item: Product
+      item: Ingredient
       order: Purchase Order
       post: Post
       space: Restaurant

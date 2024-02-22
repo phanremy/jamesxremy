@@ -28,12 +28,12 @@ fr:
     prev: Préc.
   items:
     index:
-      tab: Produits
-    new: Nouveau Produit
-    create_success: Le produit a été créé avec succès !
-    destroy_confirm: Êtes-vous sûr ? La suppression d'un produit est définitive.
-    destroy_success: Le produit a été supprimé avec succès.
-    update_success: Le produit a été mis à jour avec succès !
+      tab: Ingrédients
+    new: Nouveau Ingrédient
+    create_success: Le Ingrédient a été créé avec succès !
+    destroy_confirm: Êtes-vous sûr ? La suppression d'un Ingrédient est définitive.
+    destroy_success: Le Ingrédient a été supprimé avec succès.
+    update_success: Le Ingrédient a été mis à jour avec succès !
   links:
     description: Un lien temporaire à partager avec de nouveaux membres
     available_until: Disponible jusqu'au %{date}
@@ -43,7 +43,7 @@ fr:
     show_failure: Lien incorrect
   orders:
     index:
-      product_list: Liste de(s) produit(s)
+      product_list: Liste de(s) Ingrédient(s)
       tab: Bon De Commande
       see: Voir
     status:
@@ -51,10 +51,10 @@ fr:
       cancelled: Annulée
       delivered: Livrée
     new: Nouveau Bon de Commande
-    create_success: Le bon de commande a été créé avec succès !
-    destroy_confirm: Êtes-vous sûr ? La suppression d'un bon de commande est définitive.
-    destroy_success: Le bon de commande a été supprimé avec succès.
-    update_success: Le bon de commande a été mis à jour avec succès !
+    create_success: Le Bon de Commande a été créé avec succès !
+    destroy_confirm: Êtes-vous sûr ? La suppression d'un Bon de Commande est définitive.
+    destroy_success: Le Bon de Commande a été supprimé avec succès.
+    update_success: Le Bon de Commande a été mis à jour avec succès !
   posts:
     new: Nouveau poste
     create_success: Le poste a été créé avec succès !
@@ -70,10 +70,10 @@ fr:
       tab: Paramètres
       title: Restaurants
     new: Nouveau restaurant
-    create_success: Le restaurant a été créé avec succès !
-    destroy_confirm: Êtes-vous sûr ? La suppression d'un restaurant est définitive.
-    destroy_success: Le restaurant a été supprimé avec succès.
-    update_success: Le restaurant a été mis à jour avec succès !
+    create_success: Le Restaurant a été créé avec succès !
+    destroy_confirm: Êtes-vous sûr ? La suppression d'un Restaurant est définitive.
+    destroy_success: Le Restaurant a été supprimé avec succès.
+    update_success: Le Restaurant a été mis à jour avec succès !
     users:
       unconfirmed:
         description: Votre adhésion est en attente de confirmation.
@@ -85,20 +85,20 @@ fr:
       delivery_duration: Livraison théorique dans
       tab: Fournisseurs
     new: Nouveau Fournisseur
-    create_success: Le fournisseur a été créé avec succès !
-    destroy_confirm: Êtes-vous sûr ? La suppression d'un fournisseur est définitive.
-    destroy_success: Le fournisseur a été supprimé avec succès.
-    update_success: Le fournisseur a été mis à jour avec succès !
+    create_success: Le Fournisseur a été créé avec succès !
+    destroy_confirm: Êtes-vous sûr ? La suppression d'un Fournisseur est définitive.
+    destroy_success: Le Fournisseur a été supprimé avec succès.
+    update_success: Le Fournisseur a été mis à jour avec succès !
   users:
     index:
       title: Utilisateurs
       spaces_count: Nb de restaurants
       actions: Actions
-    destroy_confirm: Êtes-vous sûr ? La suppression d'un utilisateur est définitive.
+    destroy_confirm: Êtes-vous sûr ? La suppression d'un Utilisateur est définitive.
     destroy_not_yourself: Vous ne pouvez pas vous supprimer vous-même
-    destroy_success: L'utilisateur a été supprimé avec succès.
+    destroy_success: L'Utilisateur a été supprimé avec succès.
     not_confirmed: En attente de confirmation
-    update_success: L'utilisateur a été mis à jour avec succès !
+    update_success: L'Utilisateur a été mis à jour avec succès !
 
   date:
     formats:
