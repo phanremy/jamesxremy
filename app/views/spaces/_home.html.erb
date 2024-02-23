@@ -1,6 +1,6 @@
 <div class="flex">
   <% if can? :manage, space %>
-    <%= link_to t('actions.edit'), edit_space_path(space), class: "text-blue-400 hover:text-blue-500 hover:underline" %>
+    <%= link_to t('actions.edit'), edit_space_path(space), data: { turbo: false }, class: "text-blue-400 hover:text-blue-500 hover:underline" %>
      | <%= button_to t('actions.delete'), space_path(space), method: :delete, form: { data: { turbo_confirm: t('spaces.destroy_confirm') } }, class: "text-red-400 hover:text-red-500 hover:underline" %>
   <% end %>
 </div>

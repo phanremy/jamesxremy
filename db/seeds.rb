@@ -80,8 +80,8 @@ end
 product_ids = Product.pluck(:id)
 item_ids = Item.pluck(:id)
 
-100.times.each do |time|
+200.times.each do |time|
   ProductItem.create(product_id: product_ids.sample,
                      item_id: item_ids.sample,
-                     quantity: (0..3).to_a.sample)
+                     quantity: (1..5).to_a.sample)
 end
