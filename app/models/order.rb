@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Order < ApplicationRecord
-  include Orders::Transaction
+  include Orders::Purchase
 
   belongs_to :space
   belongs_to :supplier

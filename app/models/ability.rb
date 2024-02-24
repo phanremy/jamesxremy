@@ -23,6 +23,7 @@ class Ability
     can :manage, Order
     can :manage, Product
     can %i[create update destroy], :purchase
+    can %i[create destroy], :sale
   end
 
   def user_abilities(user)

@@ -1,0 +1,29 @@
+<div class="table-row-group">
+  <div class="<%= class_names('table-row', index&.odd? ? 'bg-white' : 'bg-gray-50') %>">
+    <div class="table-cell px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900">
+      <%= index + 1 %>.
+    </div>
+
+    <div class="table-cell px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
+      <%= item.description %>
+    </div>
+
+    <div class="table-cell px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
+      <%= item.reference %>
+    </div>
+
+    <div class="table-cell px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
+      <%= item.supplier.name %>
+    </div>
+
+    <div class="table-cell px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
+      <%= item.actual_quantity %>
+    </div>
+
+    <div class="table-cell px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
+      <span class="items-center px-2.5 py-0.5 rounded-full text-xs font-medium leading-4 <%= !sale ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' %>">
+        <%= increment * (sale ? -1 : 1) %>
+      </span>
+    </div>
+  </div>
+</div>

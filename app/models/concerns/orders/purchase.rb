@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 module Orders
-  module Transaction
+  module Purchase
     extend ActiveSupport::Concern
 
     # status either delivered or pending
-    def transaction(status: :delivered)
+    def purchase_transaction(status: :delivered)
       Order.transaction do
         update!(status:,
                 delivered_at: status == :delivered ? Date.today : nil)

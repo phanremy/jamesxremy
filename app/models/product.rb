@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Product < ApplicationRecord
+  include Products::Sale
+
   belongs_to :space
   has_many :product_items, dependent: :destroy
   has_many :items, through: :product_items

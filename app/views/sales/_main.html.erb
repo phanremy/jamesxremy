@@ -1,0 +1,43 @@
+<%= turbo_frame_tag :sale do %>
+  <div class="my-8">
+    <div class="flex flex-col">
+      <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+          <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+            <div class="min-w-full divide-y divide-gray-200 table">
+              <div class="table-row">
+                <div class="table-cell px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                  #
+                </div>
+
+                <div class="table-cell px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                  <%= t('description', scope: 'activerecord.attributes.item') %>
+                </div>
+
+                <div class="table-cell px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                  <%= t('reference', scope: 'activerecord.attributes.item') %>
+                </div>
+
+                <div class="table-cell px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                  <%= t('supplier_id', scope: 'activerecord.attributes.item') %>
+                </div>
+
+                <div class="table-cell px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                  <%= t('actual_quantity', scope: 'activerecord.attributes.item') %>
+                </div>
+
+                <div class="table-cell px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                  <%= t('sales.increment') %>
+                </div>
+              </div>
+
+              <% product.product_items.includes(:item).each_with_index do |product_item, index| %>
+                <%= render 'sales/item', index:, item: product_item.item, increment: product_item.quantity, sale: %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

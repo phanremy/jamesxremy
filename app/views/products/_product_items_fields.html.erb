@@ -5,7 +5,10 @@
     <%= product_item.hidden_field :product_id %>
     <div class="flex">
       <div class="flex flex-col px-6 justify-center">
-        <%= product_item.label :item_id, class: "relative", style: "top: 0px; transform: none !important;" %>
+        <div>
+          <%= product_item.label :item_id, class: "relative", style: "top: 0px; transform: none !important;" %>
+          #<%= product_item.options[:child_index] + 1 %>
+        </div>
         <%= product_item.select(:item_id,
           space_item_datas,
           {},

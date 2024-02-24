@@ -77,6 +77,13 @@ en:
     create_success: Purchase Order was successfully delivered. (Cannot be modified in this status.)
     update_success: Purchase Order status was successfully reverted back.
     destroy_success: Purchase Order was successfully cancelled.
+  sales:
+    index:
+      create: Add a Sale
+      destroy: Remove a Sale
+    increment: Increment
+    create_success: One sale has been accounted
+    destroy_success: One sale has been removed
   spaces:
     index:
       tab: Settings

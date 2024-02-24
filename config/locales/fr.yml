@@ -73,6 +73,13 @@ fr:
     create_success: La Commande a été livrée avec succès (et ne peut plus être modifié)
     update_success: Le status de la Commande a été modifié.
     destroy_success: La Commande a été annulée.
+  sales:
+    index:
+      create: Ajouter une Vente
+      destroy: Retirer une Vente
+    increment: Variance
+    create_success: Une Vente a été comptabilisée
+    destroy_success: Une Vente a été retirée
   spaces:
     index:
       tab: Paramètres
