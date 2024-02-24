@@ -146,6 +146,7 @@ fr:
         sales_count: Nb de Vente
       product_item:
         quantity: Qté
+        item_id: Ingrédient
       space:
         owner_id: Admin
         users: Membres

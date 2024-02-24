@@ -1,14 +1,42 @@
-<%= turbo_frame_tag :space do %>
+<%= turbo_frame_tag :space, data: {
+  controller: "toggle-attribute",
+  'toggle-attribute-target': 'element',
+  'category': 'turbo_frame',
+  'attribute-change': 'target',
+  'active-value': '_top' } do %>
   <%= render "spaces/header", space: %>
 
   <div class="w-auto lg:w-1/2 pt-5">
-    <%= form_with model: [space, product], builder: TailwindBuilder do |form| %>
+    <%= form_with model: [space, product],
+                  builder: TailwindBuilder,
+                  data: { 'toggle-attribute-target': 'element',
+                          'category':                'form',
+                          'attribute-change':        'novalidate',
+                          'active-value':            true } do |form| %>
       <div class="relative my-8 border-b-2 focus-within:border-blue-500">
         <%= form.text_field :description, placeholder: " " %>
         <%= form.label :description %>
       </div>
+      <%= render partial: 'products/product_items_fields',
+                 locals: { form:, space_item_datas: space.items.order(:description).pluck(:description, :id) } %>
+      <div class="field text-right">
+        <%= button_tag name: 'add_item',
+                      class: 'text-center bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded',
+                      data: {
+                        controller: 'submit-form',
+                        action: 'toggle-attribute#toggle change->submit-form#submit',
+                        'category': 'form',
+                        'submit-form-auto-submit-value': true,
+                        'submit-form-prevent-validation-value': true
+                      } do %>
+          <% t('products.form.add_item') %>
+        <% end %>
+      </div>
       <div class="field">
-        <%= form.submit t('actions.submit') %>
+        <%= form.submit t('actions.submit'), data: {
+          action: 'toggle-attribute#toggle',
+          'category': 'turbo_frame',
+        } %>
       </div>
     <% end %>
   </div>

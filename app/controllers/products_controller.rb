@@ -13,21 +13,22 @@ class ProductsController < ApplicationController
 
   def new
     @product = @space.products.build
+    @product.product_items.build
   end
 
-  def show
-    # @items = @product.items
-    # @pagy, @items = pagy(@items, items: 20)
-  end
+  def show; end
 
   def create
     @product = @space.products.build(product_params)
-    if @product.save
-      flash[:success] = I18n.t('products.create_success')
-      render_product_show
-    else
-      flash.now[:error] = @product.errors.full_messages
-      render_flash
+
+    respond_to do |format|
+      if params[:commit].present? && @product.save
+        flash[:success] = I18n.t('products.create_success')
+        format.turbo_stream { redirect_to space_product_path(@product, space_id: @space.id) }
+      else
+        build_product_attributes
+        format.turbo_stream { render_turbo_stream }
+      end
     end
   end
 
@@ -36,12 +37,16 @@ class ProductsController < ApplicationController
   end
 
   def update
-    if @product.update(product_params)
-      flash.now[:success] = I18n.t('products.update_success')
-      render_product_show
-    else
-      flash.now[:error] = @product.errors.full_messages
-      render_flash
+    @product.assign_attributes(product_params)
+
+    respond_to do |format|
+      if params[:commit].present? && @product.save
+        flash[:success] = I18n.t('products.update_success')
+        format.html { redirect_to space_product_path(@product, space_id: @space.id) }
+      else
+        build_product_attributes
+        format.turbo_stream { render_turbo_stream }
+      end
     end
   end
 
@@ -61,9 +66,15 @@ class ProductsController < ApplicationController
     products
   end
 
-  def render_product_show
+  def build_product_attributes
+    @field_submitter = params.dig(:product, :field_submitter)
+    @product.product_items.build if params[:add_item]
+  end
+
+  def render_turbo_stream
+    flash.now[:error] = @product.errors.full_messages if @product.errors.any?
     @turbo_stream_data = [
-      turbo_stream.update(:space, partial: 'products/main', locals: { product: @product, space: @space }),
+      turbo_stream.update(:space, partial: 'products/form', locals: { product: @product, space: @product.space }),
       turbo_stream.update('flash', partial: 'shared/flash')
     ]
 
@@ -71,7 +82,7 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:description, product_items_ids: [])
+    params.require(:product).permit(:description, product_items_attributes: %i[id product_id item_id quantity _destroy])
   end
 
   def set_spaces

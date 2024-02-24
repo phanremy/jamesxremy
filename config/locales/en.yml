@@ -150,6 +150,7 @@ en:
         sales_count: Sales Count
       product_item:
         quantity: Qty
+        item_id: Ingredient
       space:
         owner_id: Admin
         users: Members

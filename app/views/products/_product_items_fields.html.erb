@@ -1,0 +1,52 @@
+<%= form.fields_for :product_items do |product_item| %>
+  <div class="mt-3 <%= 'hidden' if product_item.object._destroy %>"
+       data-controller="toggle-attribute">
+    <%= product_item.hidden_field :id %>
+    <%= product_item.hidden_field :product_id %>
+    <div class="flex">
+      <div class="flex flex-col px-6 justify-center">
+        <%= product_item.label :item_id, class: "relative", style: "top: 0px; transform: none !important;" %>
+        <%= product_item.select(:item_id,
+          space_item_datas,
+          {},
+          { data:     { controller:  "slim-select",
+                        placeholder: t('actions.search'),
+                        "no-result": t('alert.none', class_name: t('item', scope: 'activerecord.models').pluralize.downcase)  },
+            class:    "w-full lg:w-1/2" }) %>
+      </div>
+      <div class="relative my-8 border-b-2 focus-within:border-blue-500">
+        <%= product_item.number_field :quantity, placeholder: " " %>
+        <%= product_item.label :quantity %>
+      </div>
+
+      <div class="flex grid-cols-1 lg:grid-cols-6 gap-2">
+        <%# if product_item.options[:child_index].positive? %>
+          <%= button_tag name: "destroy_item_#{product_item.options[:child_index]}",
+                         data: {
+                           controller: 'submit-form',
+                           action: 'toggle-attribute#toggle change->submit-form#submit',
+                           'category': 'form',
+                           'submit-form-auto-submit-value': true,
+                           'submit-form-prevent-validation-value': true
+                         } do %>
+            <div class="justify-center items-center order-first lg:order-last">
+              <span data-action="click->toggle-attribute#toggle"
+                    category="destroy_item_<%=product_item.options[:child_index] %>">
+                ❌
+              </span>
+            </div>
+          <% end %>
+        <%# end %>
+      </div>
+    </div>
+
+    <%= product_item.check_box :_destroy,
+      class: 'hidden',
+      data: {
+        'toggle-attribute-target': 'element',
+        'category': "destroy_item_#{product_item.options[:child_index]}",
+        'attribute-change': 'checked',
+        'active-value': '1'
+      } %>
+  </div>
+<% end %>
