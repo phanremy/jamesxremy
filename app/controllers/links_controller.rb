@@ -28,8 +28,7 @@ class LinksController < ApplicationController
     if @link.destroy
       render_destroy_success
     else
-      flash.now[:error] = I18n.t('alert.general_error')
-      render_flash
+      render_general_error
     end
   end
 

@@ -3,7 +3,7 @@
 class OrdersController < ApplicationController
   load_and_authorize_resource
 
-  before_action :set_spaces
+  before_action :set_space
   before_action :set_order, except: %i[index new create]
 
   def index
@@ -47,8 +47,7 @@ class OrdersController < ApplicationController
       flash[:success] = I18n.t('orders.destroy_success')
       redirect_to space_orders_path(space: @space)
     else
-      flash.now[:error] = I18n.t('alert.general_error')
-      render_flash
+      render_general_error
     end
   end
 
@@ -71,7 +70,7 @@ class OrdersController < ApplicationController
     params.require(:order).permit(:supplier_id)
   end
 
-  def set_spaces
+  def set_space
     @space = Space.find(params[:space_id])
   end
 

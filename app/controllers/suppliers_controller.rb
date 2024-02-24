@@ -50,8 +50,7 @@ class SuppliersController < ApplicationController
       flash[:success] = I18n.t('suppliers.destroy_success')
       redirect_to space_suppliers_path(space: @space)
     else
-      flash.now[:error] = I18n.t('alert.general_error')
-      render_flash
+      render_general_error
     end
   end
 

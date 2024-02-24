@@ -31,6 +31,11 @@ class ApplicationController < ActionController::Base
     render turbo_stream: turbo_stream.update('flash', partial: 'shared/flash')
   end
 
+  def render_general_error
+    flash.now[:error] = I18n.t('alert.general_error')
+    render_flash
+  end
+
   private
 
   def default_url_options

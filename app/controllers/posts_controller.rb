@@ -43,8 +43,7 @@ class PostsController < ApplicationController
       flash[:success] = I18n.t('posts.destroy_success')
       redirect_to posts_path
     else
-      flash.now[:error] = I18n.t('alert.general_error')
-      render_flash
+      render_general_error
     end
   end
 
