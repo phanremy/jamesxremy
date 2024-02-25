@@ -88,7 +88,8 @@ fr:
     index:
       create: Ajouter une Vente
       destroy: Retirer une Vente
-    increment: Variance (Brut)
+    increment: Hausse (Brut)
+    decrement: Baisse (Brut)
     create_success: Une Vente a été comptabilisée !
     destroy_success: Une Vente a été retirée.
   spaces:

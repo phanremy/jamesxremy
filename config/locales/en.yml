@@ -93,6 +93,7 @@ en:
       create: Add a Sale
       destroy: Remove a Sale
     increment: Increment (Gross)
+    decrement: Decrement (Gross)
     create_success: One sale has been accounted!
     destroy_success: One sale has been removed.
   spaces:
