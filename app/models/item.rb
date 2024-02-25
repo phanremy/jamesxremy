@@ -11,6 +11,9 @@ class Item < ApplicationRecord
   validates :supplier, presence: true
   validates :description, :reference, :price, :actual_quantity, :expected_quantity, presence: true
 
+  DEFAULT_UNIT = 'unit'
+  UNITS = %w[piece kilo box package bottle carton lot].push(DEFAULT_UNIT).freeze
+
   def variance_quantity
     actual_quantity - expected_quantity
   end

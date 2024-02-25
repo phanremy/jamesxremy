@@ -26,6 +26,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_22_200948) do
     t.decimal "expected_quantity", default: "0.0", null: false
     t.bigint "supplier_id", null: false
     t.bigint "space_id", null: false
+    t.string "unit", default: "unit", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["space_id"], name: "index_items_on_space_id"
@@ -79,7 +80,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_22_200948) do
   create_table "product_items", force: :cascade do |t|
     t.bigint "product_id", null: false
     t.bigint "item_id", null: false
-    t.decimal "quantity", default: "1.0", null: false
+    t.decimal "gross_quantity", default: "1.0", null: false
+    t.decimal "net_quantity", default: "1.0", null: false
+    t.decimal "quantity_ratio", default: "1.0", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_product_items_on_item_id"
@@ -111,6 +114,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_22_200948) do
     t.string "software", default: "none", null: false
     t.bigint "owner_id", null: false
     t.boolean "public", default: false, null: false
+    t.string "extra_units", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["owner_id"], name: "index_spaces_on_owner_id"

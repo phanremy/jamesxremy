@@ -11,6 +11,8 @@ class Space < ApplicationRecord
   has_many :suppliers, dependent: :destroy
   has_many :products, dependent: :destroy
 
+  # TODO: check if extra_units deleted are not used
+
   def members
     users.including(owner)
   end

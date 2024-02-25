@@ -29,6 +29,15 @@ en:
   items:
     index:
       tab: Ingredients
+    unit:
+      piece: Piece(s)
+      kilo: Kilo(s)
+      box: Box(es)
+      package: Package(s)
+      bottle: Bottle(s)
+      carton: Carton(s)
+      lot: Lot(s)
+      unit: Unit(s)
     new: New Ingredient
     create_success: Ingredient was successfully created!
     destroy_confirm: Are you sure? Deleting a Ingredient is permanent.
@@ -64,6 +73,8 @@ en:
   products:
     index:
       tab: Products
+    form:
+      add_item: Add Item
     new: New Product
     create_success: Product was successfully created!
     destroy_confirm: Are you sure? Deleting a Product is permanent.
@@ -81,9 +92,9 @@ en:
     index:
       create: Add a Sale
       destroy: Remove a Sale
-    increment: Increment
-    create_success: One sale has been accounted
-    destroy_success: One sale has been removed
+    increment: Increment (Gross)
+    create_success: One sale has been accounted!
+    destroy_success: One sale has been removed.
   spaces:
     index:
       tab: Settings
@@ -140,9 +151,10 @@ en:
         reference: ID
         supplier_id: Supplier
         price: Price
-        actual_quantity: Actual qty
-        expected_quantity: Expected qty
-        variance_quantity: Actual - Expected qty
+        actual_quantity: Actual qty (Gross)
+        expected_quantity: Expected qty (Gross)
+        variance_quantity: Actual - Expected qty (Gross)
+        unit: Unit
       order:
         status: Status
         price: Total Price
@@ -156,11 +168,14 @@ en:
         price: Price
         sales_count: Sales Count
       product_item:
-        quantity: Qty
+        gross_quantity: Gross Qty
+        net_quantity: Net Qty
+        quantity_ratio: Qty Ratio
         item_id: Ingredient
       space:
         owner_id: Admin
         users: Members
+        extra_units: Extra Units (separated by a comma)
       supplier:
         name: Name
         expected_day: Number of expected Day

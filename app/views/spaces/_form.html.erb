@@ -4,6 +4,10 @@
       <%= form.text_field :description, placeholder: " " %>
       <%= form.label :description %>
     </div>
+    <div class="relative my-8 border-b-2 focus-within:border-blue-500">
+      <%= form.text_field :extra_units, placeholder: " ", value: @space.extra_units.join(',') %>
+      <%= form.label :extra_units %>
+    </div>
     <div class="flex my-8 items-center justify-between">
       <%= form.label :users, class: "relative", style: "top: 0px; transform: none !important;" %>
       <%= form.select(:user_ids,
@@ -16,7 +20,7 @@
                         class:    "w-full lg:w-1/2 ml-6" }) %>
     </div>
     <div class="actions">
-      <%= form.submit class:"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer" %>
+      <%= form.submit t('actions.submit'), class:"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer" %>
     </div>
   <% end %>
 </div>

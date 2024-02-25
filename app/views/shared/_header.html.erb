@@ -15,8 +15,8 @@
                    is_top:           true,
                    responsive_title: false do %>
         <%= dropdown_link t('spaces.index.title'), spaces_path, turbo: false if user_signed_in? && current_user.confirmed? %>
-        <%= dropdown_link t('posts.new'), new_post_path, turbo: false if can? :create, Post %>
         <%= dropdown_link t('spaces.new'), new_space_path, turbo: false if can? :manage, Space %>
+        <%= dropdown_link t('posts.new'), new_post_path, turbo: false if can? :create, Post %>
         <%= dropdown_link t('users.index.title'), users_path, turbo: false if can? :manage, User %>
         <% if user_signed_in? %>
           <%= dropdown_link t('devise.log_out'), destroy_user_session_path, turbo: false %>

@@ -4,5 +4,5 @@ class ProductItem < ApplicationRecord
   belongs_to :product
   belongs_to :item
 
-  validates :quantity, presence: true
+  validates :gross_quantity, :net_quantity, :quantity_ratio, presence: true
 end

@@ -3,9 +3,13 @@
 default:
   product: default
   item: default
-  quantity: 1
+  gross_quantity: 1
+  net_quantity: 0.8
+  quantity_ratio: 0.8
 
 alternative:
   product: alternative
   item: alternative
-  quantity: 1
+  gross_quantity: 1
+  net_quantity: 0.8
+  quantity_ratio: 0.8

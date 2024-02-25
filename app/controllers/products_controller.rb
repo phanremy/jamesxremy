@@ -81,7 +81,10 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:description, product_items_attributes: %i[id product_id item_id quantity _destroy])
+    params.require(:product).permit(
+      :description,
+      product_items_attributes: %i[id product_id item_id gross_quantity net_quantity quantity_ratio _destroy]
+    )
   end
 
   def set_spaces

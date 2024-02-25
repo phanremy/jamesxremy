@@ -9,12 +9,20 @@
 </div>
 <div class="py-5">
   <%= t('users', scope: 'activerecord.attributes.space') %> :
+  <br>
   <% space.users.order(confirmed: :desc).each do |user| %>
-    <br><%= user.email %> <%= "(#{t('users.not_confirmed')})" if space.unconfirmed_member?(user) %>
+    <%= user.email %> <%= "(#{t('users.not_confirmed')})" if space.unconfirmed_member?(user) %>
   <% end %>
 </div>
+<% if space.extra_units.any? %>
+  <div class="py-5">
+    <%= t('extra_units', scope: 'activerecord.attributes.space') %> : <%= space.extra_units.to_sentence %>
+  </div>
+<% else %>
+  <%= t('alert.none', class_name: t('extra_units', scope: 'activerecord.attributes.space').downcase) %>
+<% end %>
 <% if can? :manage, space %>
-  <div class="border py-5 p-2">
+  <div class="border my-8 py-5 p-2">
     <%= t('links.description') %> <br>
     <% if current_user.available_link(space) %>
       <%= render 'links/url', link: current_user.available_link(space) %>

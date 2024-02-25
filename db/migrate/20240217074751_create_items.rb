@@ -10,6 +10,7 @@ class CreateItems < ActiveRecord::Migration[7.1]
       t.decimal :expected_quantity, null: false, default: 0
       t.references :supplier, null: false, foreign_key: true
       t.references :space, null: false, foreign_key: true
+      t.string :unit, null: false, default: 'unit'
 
       t.timestamps
     end

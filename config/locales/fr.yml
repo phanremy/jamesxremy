@@ -15,7 +15,7 @@ fr:
     characters_minimum: (%{number} caractères minimum)
     done: Terminé !
     general_error: Quelque chose s'est mal passé, veuillez réessayer plus tard
-    none: Aucun %{class_name}
+    none: Aucun(e) %{class_name}
   devise:
     forgot_password: Mot de passe oublié ?
     log_in: Se connecter
@@ -29,6 +29,15 @@ fr:
   items:
     index:
       tab: Ingrédients
+    unit:
+      piece: Pièce(s)
+      kilo: Kilo(s)
+      box: Boîte(s)
+      package: Colis
+      bottle: Bouteille(s)
+      carton: Carton(s)
+      lot: Lot(s)
+      unit: Unité(s)
     new: Nouveau Ingrédient
     create_success: Le Ingrédient a été créé avec succès !
     destroy_confirm: Êtes-vous sûr ? La suppression d'un Ingrédient est définitive.
@@ -64,6 +73,8 @@ fr:
   products:
     index:
       title: Produits
+    form:
+      add_item: Ajouter un Ingrédient
     new: Nouveau Produit
     create_success: Le Produit a été créé avec succès !
     destroy_confirm: Êtes-vous sûr ? La suppression d'un Produit est définitive.
@@ -77,9 +88,9 @@ fr:
     index:
       create: Ajouter une Vente
       destroy: Retirer une Vente
-    increment: Variance
-    create_success: Une Vente a été comptabilisée
-    destroy_success: Une Vente a été retirée
+    increment: Variance (Brut)
+    create_success: Une Vente a été comptabilisée !
+    destroy_success: Une Vente a été retirée.
   spaces:
     index:
       tab: Paramètres
@@ -136,9 +147,10 @@ fr:
         reference: ID
         supplier_id: Fournisseur
         price: Prix
-        actual_quantity:  Qté actuel
-        expected_quantity: Qté prévu
-        variance_quantity: Qté actuel - prévu
+        actual_quantity:  Qté actuelle (Brut)
+        expected_quantity: Qté prévue (Brut)
+        variance_quantity: Qté actuelle - prévue (Brut)
+        unit: Unité
       order:
         status: Status
         price: Prix Total
@@ -146,17 +158,20 @@ fr:
         expected_at: Date de livraison prévu
         delivered_at: Date de livraison
       order_item:
-        quantity: Qté
+        quantity: Qté (Brut)
       product:
         description: Description
         price: Prix
         sales_count: Nb de Vente
       product_item:
-        quantity: Qté
+        gross_quantity: Qté (Brut)
+        net_quantity: Qté (Net)
+        quantity_ratio: Ratio Qté
         item_id: Ingrédient
       space:
         owner_id: Admin
         users: Membres
+        extra_units: Unités Supplémentaires (séparées par une virgule)
       supplier:
         name: Nom
         expected_day: Nb de Jours prévus

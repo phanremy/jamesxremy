@@ -32,7 +32,7 @@
               </div>
 
               <% product.product_items.includes(:item).each_with_index do |product_item, index| %>
-                <%= render 'sales/item', index:, item: product_item.item, increment: product_item.quantity, sale: %>
+                <%= render 'sales/item', index:, item: product_item.item, increment: product_item.gross_quantity, sale: %>
               <% end %>
             </div>
           </div>

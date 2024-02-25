@@ -19,6 +19,7 @@ class SpacesController < ApplicationController
   def create
     @space = Space.new(space_params)
     @space.owner = current_user
+    @space.extra_units = params.dig(:space, :extra_units)&.split(',')
     if @space.save
       flash[:success] = I18n.t('spaces.create_success')
       redirect_to @space
@@ -31,7 +32,9 @@ class SpacesController < ApplicationController
   def edit; end
 
   def update
-    if @space.update(space_params)
+    @space.assign_attributes(space_params)
+    @space.extra_units = params.dig(:space, :extra_units)&.split(',')
+    if @space.save
       flash.now[:success] = I18n.t('spaces.update_success')
       redirect_to @space
     else

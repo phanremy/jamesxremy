@@ -35,7 +35,7 @@ _post2 = Post.create(title: 'Admin\'s first post', body: 'This is the first post
 #               body: generate_sku(excluded: Space.pluck(:description)))
 # end
 
-space1 = Space.create(owner: creator, description: 'Mon Restaurant', user_ids: [member1.id])
+space1 = Space.create(owner: creator, description: 'Mon Restaurant', user_ids: [member1.id], extra_units: ['L', 'g'])
 _space2 = Space.create(owner: creator, description: 'Mon Restaurant', user_ids: [])
 
 # 100.times.each do |time|
@@ -63,6 +63,7 @@ supplier_ids = Supplier.pluck(:id)
               supplier_id: supplier_ids.sample,
               price: (10..99).to_a.sample.fdiv(10),
               actual_quantity: (2..100).to_a.sample,
+              unit: Item::UNITS.sample,
               expected_quantity: (2..100).to_a.sample)
 end
 
@@ -83,5 +84,7 @@ item_ids = Item.pluck(:id)
 200.times.each do |time|
   ProductItem.create(product_id: product_ids.sample,
                      item_id: item_ids.sample,
-                     quantity: (1..5).to_a.sample)
+                     gross_quantity: (1..5).to_a.sample,
+                     net_quantity: (1..5).to_a.sample,
+                     quantity_ratio: (1..9).to_a.sample.fdiv(10))
 end
