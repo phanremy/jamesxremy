@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
   before_action :set_product, except: %i[index new create]
 
   def index
-    @products = products_query(@space.products.order(:description))
+    @products = products_query
     @pagy, @products = pagy(@products, products: 20)
   end
 
@@ -61,8 +61,10 @@ class ProductsController < ApplicationController
 
   private
 
-  def products_query(products)
-    products
+  def products_query
+    @space.products
+          .description_query(params[:search])
+          .order(:description)
   end
 
   def build_product_attributes

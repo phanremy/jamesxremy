@@ -11,4 +11,10 @@ class Product < ApplicationRecord
 
   validates :description, presence: true, uniqueness: { scope: :space_id }
   validates :price, presence: true
+
+  scope :description_query, lambda { |description|
+    return if description.blank?
+
+    where(arel_table[:description].matches("%#{I18n.transliterate(description)}%"))
+  }
 end

@@ -3,9 +3,8 @@ module ItemsHelper
     t("items.unit.#{unit}")
   end
 
-  def units_list(space, item)
-    list = Item::UNITS.map { |unit| [unit_name(unit), unit] } +
-           space.extra_units.map { |unit| [unit, unit] }
-    options_for_select(list, item.unit)
+  def units_list(space)
+    Item::UNITS.map { |unit| [unit_name(unit), unit] } +
+      space.extra_units.map { |unit| [unit, unit] }
   end
 end

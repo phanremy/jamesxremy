@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
   before_action :set_item, except: %i[index new create]
 
   def index
-    @items = items_query(@space.items.includes(:supplier).order(:supplier_id, :description))
+    @items = items_query
     @pagy, @items = pagy(@items, items: 20)
   end
 
@@ -53,8 +53,12 @@ class ItemsController < ApplicationController
 
   private
 
-  def items_query(items)
-    items
+  def items_query
+    @space.items
+          .includes(:supplier)
+          .description_or_reference_query(params[:search])
+          .supplier_query(params[:supplier_id])
+          .order(:supplier_id, :description)
   end
 
   def render_item_show

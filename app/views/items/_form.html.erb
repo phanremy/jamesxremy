@@ -26,7 +26,7 @@
       <div class="flex my-8 items-center justify-between">
         <%= form.label :unit, class: "relative", style: "top: 0px; transform: none !important;" %>
         <%= form.select(:unit,
-                        units_list(space, item),
+                        options_for_select(units_list(space), item.unit),
                         {},
                         { data:     { controller:  "slim-select",
                                       placeholder: t('actions.search'),

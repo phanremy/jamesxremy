@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
   before_action :set_order, except: %i[index new create]
 
   def index
-    @orders = orders_query(@space.orders.includes(:supplier, :items).order(created_at: :desc))
+    @orders = orders_query
     @pagy, @orders = pagy(@orders, items: 20)
   end
 
@@ -53,8 +53,12 @@ class OrdersController < ApplicationController
 
   private
 
-  def orders_query(orders)
-    orders
+  def orders_query
+    @space.orders
+          .includes(:supplier, :items)
+          .supplier_query(params[:supplier_id])
+          .status_query(params[:status])
+          .order(created_at: :desc)
   end
 
   def render_order_show

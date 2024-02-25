@@ -7,6 +7,12 @@ class Supplier < ApplicationRecord
 
   validates :name, presence: true, uniqueness: { scope: :space_id }
 
+  scope :name_query, lambda { |name|
+    return if name.blank?
+
+    where(arel_table[:name].matches("%#{I18n.transliterate(name)}%"))
+  }
+
   def delivery_duration
     expected_day.day +
       expected_week.week +

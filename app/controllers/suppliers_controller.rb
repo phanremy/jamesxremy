@@ -7,7 +7,7 @@ class SuppliersController < ApplicationController
   before_action :set_supplier, except: %i[index new create]
 
   def index
-    @suppliers = suppliers_query(@space.suppliers.order(:name))
+    @suppliers = suppliers_query
     @pagy, @suppliers = pagy(@suppliers, items: 20)
   end
 
@@ -56,8 +56,10 @@ class SuppliersController < ApplicationController
 
   private
 
-  def suppliers_query(suppliers)
-    suppliers
+  def suppliers_query
+    @space.suppliers
+          .name_query(params[:search])
+          .order(:name)
   end
 
   def render_supplier_show

@@ -16,6 +16,9 @@ class Order < ApplicationRecord
 
   before_save :build_order_items, :set_expected_at, if: :new_record?
 
+  scope :supplier_query, ->(supplier_id) { supplier_id.blank? ? return : where(supplier_id:) }
+  scope :status_query, ->(status) { status.blank? ? return : where(status:) }
+
   def build_order_items
     items = supplier.items.where("items.expected_quantity > items.actual_quantity")
     self.order_items = items.map do |item|

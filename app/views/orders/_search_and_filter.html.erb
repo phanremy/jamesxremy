@@ -1,0 +1,12 @@
+<div id="orders-search">
+  <%= form_with url: space_orders_path(space), method: :get, builder: TailwindBuilder, html: { class: "pb-5 flex flex-wrap gap-2", data: { controller: "autosave" } } do |form| %>
+    <%= select_tag :status,
+        options_for_select(status_list, params[:status]),
+        class: 'rounded-md border-gray-300 shadow-sm',
+        data: { action: 'autosave#save' } %>
+    <%= select_tag :supplier_id,
+        options_for_select(suppliers_list(space), params[:supplier_id]),
+        class: "w-full lg:w-1/2",
+        data: { controller: "slim-select", action: "autosave#save" } %>
+  <% end %>
+</div>
