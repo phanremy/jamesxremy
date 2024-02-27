@@ -100,6 +100,12 @@ en:
     index:
       tab: Settings
       title: Restaurants
+    softwares:
+      none: None
+      l_addition: L'Addition
+      square: Square
+      tiller: Tiller
+      zelty: Zelty
     new: New Restaurant
     create_success: Restaurant was successfully created!
     destroy_confirm: Are you sure? Deleting a Restaurant is permanent.
@@ -177,6 +183,7 @@ en:
         owner_id: Admin
         users: Members
         extra_units: Extra Units (separated by a comma)
+        software: Software
       supplier:
         name: Name
         expected_day: Number of expected Day

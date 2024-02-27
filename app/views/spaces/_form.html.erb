@@ -9,6 +9,16 @@
       <%= form.label :extra_units %>
     </div>
     <div class="flex my-8 items-center justify-between">
+      <%= form.label :software, class: "relative", style: "top: 0px; transform: none !important;" %>
+      <%= form.select(:software,
+                      options_for_select(softwares_list, @space.software),
+                      {},
+                      { data:     { controller:  "slim-select",
+                                    placeholder: t('actions.search'),
+                                    "no-result": t('alert.none', class_name: t('software', scope: 'activerecord.attributes.space').pluralize.downcase)  },
+                        class:    "w-full lg:w-1/2 ml-6" }) %>
+    </div>
+    <div class="flex my-8 items-center justify-between">
       <%= form.label :users, class: "relative", style: "top: 0px; transform: none !important;" %>
       <%= form.select(:user_ids,
                       User.excluding(@space.owner).order(:email).pluck(:email, :id),

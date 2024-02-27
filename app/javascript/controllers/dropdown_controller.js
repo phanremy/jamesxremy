@@ -24,7 +24,8 @@ export default class extends Controller {
   process () {
     if (this.contentTarget.style.width === '0px') {
     } else {
-    this.contentTarget.classList.toggle('hidden')
+      this.contentTarget.classList.toggle('hidden')
+    }
   }
 
   setClickListenerOutOfContent () {

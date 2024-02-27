@@ -1,8 +1,8 @@
 module OrdersHelper
-  def date(datetime)
+  def date(datetime, format: :short)
     return if datetime.nil?
 
-    l datetime.to_date, format: :fr_short
+    l datetime.to_date, format: :"fr_#{format}"
   end
 
   def order_status_color(order)

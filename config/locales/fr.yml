@@ -96,6 +96,12 @@ fr:
     index:
       tab: Paramètres
       title: Restaurants
+    softwares:
+      none: None
+      l_addition: L'Addition
+      square: Square
+      tiller: Tiller
+      zelty: Zelty
     new: Nouveau restaurant
     create_success: Le Restaurant a été créé avec succès !
     destroy_confirm: Êtes-vous sûr ? La suppression d'un Restaurant est définitive.
@@ -173,6 +179,7 @@ fr:
         owner_id: Admin
         users: Membres
         extra_units: Unités Supplémentaires (séparées par une virgule)
+        software: Logiciel de Caisse
       supplier:
         name: Nom
         expected_day: Nb de Jours prévus

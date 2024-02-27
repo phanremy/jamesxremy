@@ -11,6 +11,8 @@ class Space < ApplicationRecord
   has_many :suppliers, dependent: :destroy
   has_many :products, dependent: :destroy
 
+  SOFTWARES = %i[none l_addition square tiller zelty].freeze
+
   # TODO: check if extra_units deleted are not used
 
   def members

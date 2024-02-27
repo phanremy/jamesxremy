@@ -14,6 +14,9 @@
     <%= user.email %> <%= "(#{t('users.not_confirmed')})" if space.unconfirmed_member?(user) %>
   <% end %>
 </div>
+<div class="py-5">
+  <%= t('software', scope: 'activerecord.attributes.space') %> : <%= software_name(space.software) %>
+</div>
 <% if space.extra_units.any? %>
   <div class="py-5">
     <%= t('extra_units', scope: 'activerecord.attributes.space') %> : <%= space.extra_units.to_sentence %>
