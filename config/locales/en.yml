@@ -72,6 +72,7 @@ en:
     update_success: Post was successfully updated!
   products:
     index:
+      title: Products
       tab: Products
     form:
       add_item: Add Item

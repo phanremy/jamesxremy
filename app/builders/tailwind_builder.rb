@@ -27,11 +27,11 @@ class TailwindBuilder < ActionView::Helpers::FormBuilder
 
   # Add spinner
   def submit(attribute, options = {})
-    options[:class] = "text-white font-bold py-2 px-4 rounded #{options[:class]}".strip
+    options[:class] = "font-semibold border-transparent py-2 px-4 rounded #{options[:class]}".strip
     if options[:disabled]
       options[:class] = "bg-gray-500 text-white cursor-not-allowed #{options[:class]}".strip
     else
-      options[:class] = "bg-blue-500 hover:bg-blue-700 cursor-pointer #{options[:class]}".strip
+      options[:class] = "bg-gray-200 hover:bg-gray-300 cursor-pointer #{options[:class]}".strip
     end
 
     super(attribute, options)

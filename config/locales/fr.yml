@@ -73,6 +73,7 @@ fr:
   products:
     index:
       title: Produits
+      tab: Produits
     form:
       add_item: Ajouter un Ingrédient
     new: Nouveau Produit
