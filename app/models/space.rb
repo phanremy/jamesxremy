@@ -10,6 +10,7 @@ class Space < ApplicationRecord
   has_many :orders, dependent: :destroy
   has_many :suppliers, dependent: :destroy
   has_many :products, dependent: :destroy
+  has_many :sales, dependent: :destroy
 
   SOFTWARES = %i[none l_addition square tiller zelty].freeze
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_22_200948) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_03_093652) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -99,6 +99,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_22_200948) do
     t.index ["space_id"], name: "index_products_on_space_id"
   end
 
+  create_table "sales", force: :cascade do |t|
+    t.bigint "space_id", null: false
+    t.jsonb "details"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["space_id"], name: "index_sales_on_space_id"
+  end
+
   create_table "space_users", force: :cascade do |t|
     t.bigint "space_id", null: false
     t.bigint "user_id", null: false
@@ -157,6 +165,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_22_200948) do
   add_foreign_key "product_items", "items"
   add_foreign_key "product_items", "products"
   add_foreign_key "products", "spaces"
+  add_foreign_key "sales", "spaces"
   add_foreign_key "space_users", "spaces"
   add_foreign_key "space_users", "users"
   add_foreign_key "spaces", "users", column: "owner_id"
