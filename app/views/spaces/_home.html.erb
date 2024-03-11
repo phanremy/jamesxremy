@@ -34,3 +34,13 @@
     <% end %>
   </div>
 <% end %>
+
+<div class="py-5">
+  Sales (recorded API)
+</div>
+
+<% @sales.order(created_at: :desc).each do |sale| %>
+  <%= link_to space_sale_path(sale) do %>
+    <div>Sale #<%= sale.id %> (click)</div>
+  <% end %>
+<% end %>

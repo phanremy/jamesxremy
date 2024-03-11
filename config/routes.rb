@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       resources :items
       resources :suppliers
       resources :orders
+      resources :sales
     end
     resources :orders, only: %i[] do
       resource :purchases, only: %i[create update destroy]

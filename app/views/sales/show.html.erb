@@ -1,0 +1,10 @@
+<%= turbo_frame_tag :space do %>
+  <%= link_to "go_back_to_project", space_path(@space), data: { turbo: false }, class: "block text-center bg-gray-200 hover:bg-gray-300 text-dark font-semibold py-2 px-4 border-transparent rounded" %>
+  Sale #<%= @sale.id %>
+  <br>
+  <%= date(@sale.created_at) %>
+  <br>
+  <pre>
+    <%= JSON.pretty_generate(@sale.details) %>
+  </pre>
+<% end %>
