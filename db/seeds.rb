@@ -88,3 +88,7 @@ item_ids = Item.pluck(:id)
                      net_quantity: (1..5).to_a.sample,
                      quantity_ratio: (1..9).to_a.sample.fdiv(10))
 end
+
+5.times.each do |time|
+  Sale.create(space: space1, details: { key: 'value'})
+end
