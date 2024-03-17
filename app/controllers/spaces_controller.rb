@@ -21,7 +21,7 @@ class SpacesController < ApplicationController
   def create
     @space = Space.new(space_params)
     @space.owner = current_user
-    @space.extra_units = params.dig(:space, :extra_units)&.split(',')
+    set_extra_attributes
     if @space.save
       flash[:success] = I18n.t('spaces.create_success')
       redirect_to @space
@@ -35,7 +35,7 @@ class SpacesController < ApplicationController
 
   def update
     @space.assign_attributes(space_params)
-    @space.extra_units = params.dig(:space, :extra_units)&.split(',')
+    set_extra_attributes
     if @space.save
       flash.now[:success] = I18n.t('spaces.update_success')
       redirect_to @space
@@ -56,11 +56,16 @@ class SpacesController < ApplicationController
 
   private
 
+  def set_extra_attributes
+    @space.extra_units = params.dig(:space, :extra_units)&.split(',')
+    @space.software_api_details[:api_key] = @space.api_key
+  end
+
   def set_space
     @space = Space.find(params[:id])
   end
 
   def space_params
-    params.require(:space).permit(:description, :software, user_ids: [])
+    params.require(:space).permit(:description, :software, :api_key, user_ids: [])
   end
 end

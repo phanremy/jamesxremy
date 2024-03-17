@@ -1,13 +1,34 @@
 <%= turbo_frame_tag :space do %>
   <%= link_to t('.go_back_to_project'), space_path(@space), data: { turbo: false }, class: "text-center bg-gray-200 hover:bg-gray-300 text-dark font-semibold py-2 px-4 border-transparent rounded" %>
   <br>
-  Sale #<%= @sale.id %>
   <br>
-  <%= date(@sale.created_at) %>
   <br>
-  <%= @sale.status %>
-  <br>
-  <pre>
-    <%= JSON.pretty_generate(@sale.details) %>
-  </pre>
+  <div class="py-1">
+    <%= t('sale', scope: 'activerecord.models') %> #<%= @sale.id %>
+  </div>
+
+  <div class="py-1">
+    <%= t('created_at', scope: 'activerecord.attributes.sale') %> : <%= date(@sale.created_at) %>
+  </div>
+  <div class="py-1">
+    <%= t('status', scope: 'activerecord.attributes.sale') %> : <%= @sale.status %>
+  </div>
+  <div class="py-1">
+    <%= t('kind', scope: 'activerecord.attributes.sale') %> : <%= @sale.kind %>
+  </div>
+  <div class="py-1">
+    <%= t('webhook_identifier', scope: 'activerecord.attributes.sale') %> : <%= @sale.webhook_identifier %>
+  </div>
+  <div class="py-1">
+    <%= t('event', scope: 'activerecord.attributes.sale') %> : <%= @sale.event %>
+  </div>
+  <div class="py-1">
+    <%= t('raw_post', scope: 'activerecord.attributes.sale') %> : <%= @sale.raw_post %>
+  </div>
+  <div class="py-1">
+    <%= t('details', scope: 'activerecord.attributes.sale') %> :
+    <pre>
+      <%= JSON.pretty_generate(@sale.details) %>
+    </pre>
+  </div>
 <% end %>

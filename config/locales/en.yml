@@ -149,6 +149,7 @@ en:
       order: Purchase Order
       post: Post
       product: Product
+      sale: Sale
       space: Restaurant
       supplier: Supplier
       user: User
@@ -180,11 +181,22 @@ en:
         net_quantity: Net Qty
         quantity_ratio: Qty Ratio
         item_id: Ingredient
+      sale:
+        space_id: Restaurant
+        details: Details
+        raw_post: Raw Post
+        kind: Kind
+        status: Status
+        webhook_identifier: Webhook Identifier
+        event: Event
+        created_at: Date
       space:
         owner_id: Admin
         users: Members
         extra_units: Extra Units (separated by a comma)
         software: Software
+        software_api_details: API details
+        api_key: API key
       supplier:
         name: Name
         expected_day: Number of expected Day

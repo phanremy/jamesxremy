@@ -17,6 +17,12 @@
 <div class="py-5">
   <%= t('software', scope: 'activerecord.attributes.space') %> : <%= software_name(space.software) %>
 </div>
+<div class="py-5">
+  <%= t('software_api_details', scope: 'activerecord.attributes.space') %> :
+  <pre>
+    <%= JSON.pretty_generate(space.software_api_details) %>
+  </pre>
+</div>
 <% if space.extra_units.any? %>
   <div class="py-5">
     <%= t('extra_units', scope: 'activerecord.attributes.space') %> : <%= space.extra_units.to_sentence %>
@@ -24,6 +30,17 @@
 <% else %>
   <%= t('alert.none', class_name: t('extra_units', scope: 'activerecord.attributes.space').downcase) %>
 <% end %>
+
+<div class="py-5">
+  <%= t('sale', scope: 'activerecord.models').pluralize %> (API)
+</div>
+
+<% @sales.order(created_at: :desc).each do |sale| %>
+  <%= link_to space_sale_path(sale, space_id: space.id) do %>
+    <div><u><%= t('sale', scope: 'activerecord.models') %> #<%= sale.id %></u></div>
+  <% end %>
+<% end %>
+
 <% if can? :manage, space %>
   <div class="border my-8 py-5 p-2">
     <%= t('links.description') %> <br>
@@ -33,14 +50,4 @@
       <%= render 'links/form', disabled: false %>
     <% end %>
   </div>
-<% end %>
-
-<div class="py-5">
-  Sales (recorded API)
-</div>
-
-<% @sales.order(created_at: :desc).each do |sale| %>
-  <%= link_to space_sale_path(sale, space_id: space.id) do %>
-    <div>Sale #<%= sale.id %> (click)</div>
-  <% end %>
 <% end %>

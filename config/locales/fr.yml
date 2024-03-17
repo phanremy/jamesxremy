@@ -145,6 +145,7 @@ fr:
       order: Bon de Commande
       post: Poste
       product: Produit
+      sale: Vente
       space: Restaurant
       supplier: Fournisseur
       user: Utilisateur
@@ -176,11 +177,22 @@ fr:
         net_quantity: Qté (Net)
         quantity_ratio: Ratio Qté
         item_id: Ingrédient
+      sale:
+        space_id: Restaurant
+        details: Détails
+        raw_post: Post Brut
+        kind: Type
+        status: Status
+        webhook_identifier: Identifiant Webhook
+        event: Evènement
+        created_at: Date
       space:
         owner_id: Admin
         users: Membres
         extra_units: Unités Supplémentaires (séparées par une virgule)
         software: Logiciel de Caisse
+        software_api_details: Détails API
+        api_key: Clé API
       supplier:
         name: Nom
         expected_day: Nb de Jours prévus
