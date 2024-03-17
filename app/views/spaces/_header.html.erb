@@ -1,9 +1,10 @@
 <%= space.description %>
 <div class="text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700 pt-5 mb-5">
   <ul class="flex flex-wrap -mb-px">
-    <% %w[spaces products orders items suppliers].each do |tab| %>
+    <% %w[sales products orders items suppliers spaces].each do |tab| %>
       <li class="me-2">
         <% link = '#' %>
+        <% link = space_sales_path(space_id: space.id) if tab == 'sales' %>
         <% link = space_products_path(space_id: space.id) if tab == 'products' %>
         <% link = space_orders_path(space_id: space.id) if tab == 'orders' %>
         <% link = space_items_path(space_id: space.id) if tab == 'items' %>

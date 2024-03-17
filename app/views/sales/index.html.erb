@@ -1,0 +1,5 @@
+<%= turbo_frame_tag :space do %>
+  <%= render 'spaces/header', space: @space %>
+
+  <%= render 'spaces/home', space: @space %>
+<% end %>

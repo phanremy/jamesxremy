@@ -76,6 +76,14 @@ en:
       tab: Products
     form:
       add_item: Add Item
+    sales:
+      index:
+        create: Add a Sale
+        destroy: Remove a Sale
+      increment: Increment (Gross)
+      decrement: Decrement (Gross)
+      create_success: One sale has been accounted!
+      destroy_success: One sale has been removed.
     new: New Product
     create_success: Product was successfully created!
     destroy_confirm: Are you sure? Deleting a Product is permanent.
@@ -91,12 +99,7 @@ en:
     destroy_success: Purchase Order was successfully cancelled.
   sales:
     index:
-      create: Add a Sale
-      destroy: Remove a Sale
-    increment: Increment (Gross)
-    decrement: Decrement (Gross)
-    create_success: One sale has been accounted!
-    destroy_success: One sale has been removed.
+      tab: Sales
   spaces:
     index:
       tab: Settings

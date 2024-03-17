@@ -18,6 +18,10 @@ class Space < ApplicationRecord
 
   # TODO: check if extra_units deleted are not used
 
+  def total_prices
+    100
+  end
+
   def members
     users.including(owner)
   end

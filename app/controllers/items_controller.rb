@@ -3,7 +3,7 @@
 class ItemsController < ApplicationController
   load_and_authorize_resource
 
-  before_action :set_spaces
+  before_action :set_space
   before_action :set_item, except: %i[index new create]
 
   def index
@@ -76,7 +76,7 @@ class ItemsController < ApplicationController
     )
   end
 
-  def set_spaces
+  def set_space
     @space = Space.find(params[:space_id])
   end
 

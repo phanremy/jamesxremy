@@ -76,6 +76,14 @@ fr:
       tab: Produits
     form:
       add_item: Ajouter un Ingrédient
+    sales:
+      index:
+        create: Ajouter une Vente
+        destroy: Retirer une Vente
+      increment: Hausse (Brut)
+      decrement: Baisse (Brut)
+      create_success: Une Vente a été comptabilisée !
+      destroy_success: Une Vente a été retirée.
     new: Nouveau Produit
     create_success: Le Produit a été créé avec succès !
     destroy_confirm: Êtes-vous sûr ? La suppression d'un Produit est définitive.
@@ -87,12 +95,7 @@ fr:
     destroy_success: La Commande a été annulée.
   sales:
     index:
-      create: Ajouter une Vente
-      destroy: Retirer une Vente
-    increment: Hausse (Brut)
-    decrement: Baisse (Brut)
-    create_success: Une Vente a été comptabilisée !
-    destroy_success: Une Vente a été retirée.
+      tab: Ventes
   spaces:
     index:
       tab: Paramètres

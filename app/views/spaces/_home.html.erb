@@ -1,53 +1,11 @@
-<div class="flex">
-  <% if can? :manage, space %>
-    <%= link_to t('actions.edit'), edit_space_path(space), data: { turbo: false }, class: "text-blue-400 hover:text-blue-500 hover:underline" %>
-     | <%= button_to t('actions.delete'), space_path(space), method: :delete, form: { data: { turbo_confirm: t('spaces.destroy_confirm') } }, class: "text-red-400 hover:text-red-500 hover:underline" %>
-  <% end %>
-</div>
-<div class="py-5">
-  <%= t('owner_id', scope: 'activerecord.attributes.space') %> : <%= space.owner.email %>
-</div>
-<div class="py-5">
-  <%= t('users', scope: 'activerecord.attributes.space') %> :
-  <br>
-  <% space.users.order(confirmed: :desc).each do |user| %>
-    <%= user.email %> <%= "(#{t('users.not_confirmed')})" if space.unconfirmed_member?(user) %>
-  <% end %>
-</div>
-<div class="py-5">
-  <%= t('software', scope: 'activerecord.attributes.space') %> : <%= software_name(space.software) %>
-</div>
-<div class="py-5">
-  <%= t('software_api_details', scope: 'activerecord.attributes.space') %> :
-  <pre>
-    <%= JSON.pretty_generate(space.software_api_details) %>
-  </pre>
-</div>
-<% if space.extra_units.any? %>
   <div class="py-5">
-    <%= t('extra_units', scope: 'activerecord.attributes.space') %> : <%= space.extra_units.to_sentence %>
+    <%= space.sales.count %> <%= t('sale', scope: 'activerecord.models').pluralize(space.sales.count) %> (API)
+    <br>
+    <%= space.total_prices %> €
   </div>
-<% else %>
-  <%= t('alert.none', class_name: t('extra_units', scope: 'activerecord.attributes.space').downcase) %>
-<% end %>
 
-<div class="py-5">
-  <%= t('sale', scope: 'activerecord.models').pluralize %> (API)
-</div>
-
-<% @sales.order(created_at: :desc).each do |sale| %>
-  <%= link_to space_sale_path(sale, space_id: space.id) do %>
-    <div><u><%= t('sale', scope: 'activerecord.models') %> #<%= sale.id %></u></div>
-  <% end %>
-<% end %>
-
-<% if can? :manage, space %>
-  <div class="border my-8 py-5 p-2">
-    <%= t('links.description') %> <br>
-    <% if current_user.available_link(space) %>
-      <%= render 'links/url', link: current_user.available_link(space) %>
-    <% else %>
-      <%= render 'links/form', disabled: false %>
+  <% space.sales.order(created_at: :desc).each do |sale| %>
+    <%= link_to space_sale_path(sale, space_id: space.id), data: { turbo: false } do %>
+      <div><u><%= t('sale', scope: 'activerecord.models') %> #<%= sale.id %></u></div>
     <% end %>
-  </div>
-<% end %>
+  <% end %>
