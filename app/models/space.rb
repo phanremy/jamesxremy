@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Space < ApplicationRecord
+  include Spaces::Software
+
   belongs_to :owner, class_name: 'User', foreign_key: :owner_id
   validates :description, presence: true, uniqueness: { scope: :owner_id }
   has_many :space_users, dependent: :destroy
@@ -11,10 +13,6 @@ class Space < ApplicationRecord
   has_many :suppliers, dependent: :destroy
   has_many :products, dependent: :destroy
   has_many :sales, dependent: :destroy
-
-  attr_accessor :api_key, :restaurant_key
-
-  SOFTWARES = %i[none l_addition square tiller zelty].freeze
 
   # TODO: check if extra_units deleted are not used
 

@@ -125,9 +125,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_03_093652) do
   create_table "spaces", force: :cascade do |t|
     t.string "description", null: false
     t.string "software", default: "none", null: false
-    t.jsonb "software_api_details", default: {}, null: false
-    t.bigint "owner_id", null: false
     t.boolean "public", default: false, null: false
+    t.bigint "owner_id", null: false
+    t.datetime "software_connected_at"
+    t.jsonb "software_api_details", default: {}, null: false
     t.string "extra_units", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -2,8 +2,8 @@
 
 default:
   space: default
-  details:
+  details: { customer: 'default'}
 
 alternative:
   space: alternative
-  details:
+  details: { customer: 'alternative'}

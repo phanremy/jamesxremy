@@ -12,11 +12,16 @@
   <br>
   <% space.users.order(confirmed: :desc).each do |user| %>
     <%= user.email %> <%= "(#{t('users.not_confirmed')})" if space.unconfirmed_member?(user) %>
+    <br>
   <% end %>
 </div>
 <div class="py-5">
   <%= t('software', scope: 'activerecord.attributes.space') %> : <%= software_name(space.software) %>
+  <% if space.software_connected_at? %>
+    (<%= t('software_connected_at', scope: 'activerecord.attributes.space') %> : <%= date(space.software_connected_at) %>)
+  <% end %>
 </div>
+
 <div class="py-5">
   <%= t('software_api_details', scope: 'activerecord.attributes.space') %> :
   <pre>

@@ -199,7 +199,9 @@ en:
         extra_units: Extra Units (separated by a comma)
         software: Software
         software_api_details: API details
+        software_connected_at: Connected At
         api_key: API key
+        restaurant_key: Restaurant Key
       supplier:
         name: Name
         expected_day: Number of expected Day
@@ -213,9 +215,11 @@ en:
         password_confirmation: Password Confirmation
         remember_me: Remember me
 
-  errors:
-    models:
-      # space:
-      #   attributes:
+    errors:
+      models:
+        space:
+          attributes:
+            software:
+              already_connected: is already connected and cannot be changed
       #     description:
             # uniqueness: already taken (a user cannot have two spaces with the same description)
