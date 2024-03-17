@@ -31,6 +31,16 @@ class ApplicationController < ActionController::Base
     render turbo_stream: turbo_stream.update('flash', partial: 'shared/flash')
   end
 
+  def render_form_turbo_stream(classes_name:, model:, locals:)
+    flash.now[:error] = model.errors.full_messages if model.errors.any?
+    @turbo_stream_data = [
+      turbo_stream.update(:space, partial: "#{classes_name}/form", locals:),
+      turbo_stream.update('flash', partial: 'shared/flash')
+    ]
+
+    render turbo_stream: @turbo_stream_data
+  end
+
   def render_general_error
     flash.now[:error] = I18n.t('alert.general_error')
     render_flash

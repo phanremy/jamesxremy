@@ -19,28 +19,18 @@ class SpacesController < ApplicationController
   def create
     @space = Space.new(space_params)
     @space.owner = current_user
-    set_extra_attributes
-    if @space.save
-      flash[:success] = I18n.t('spaces.create_success')
-      redirect_to @space
-    else
-      flash.now[:error] = @space.errors.full_messages
-      render_flash
-    end
+    assign_extra_attributes
+    render_form(:create)
   end
 
-  def edit; end
+  def edit
+    set_assign_attributes
+  end
 
   def update
     @space.assign_attributes(space_params)
-    set_extra_attributes
-    if @space.save
-      flash.now[:success] = I18n.t('spaces.update_success')
-      redirect_to @space
-    else
-      flash.now[:error] = @space.errors.full_messages
-      render_flash
-    end
+    assign_extra_attributes
+    render_form(:update)
   end
 
   def destroy
@@ -54,9 +44,41 @@ class SpacesController < ApplicationController
 
   private
 
-  def set_extra_attributes
+  def set_assign_attributes
+    %i[api_key restaurant_key].each do |key|
+      @space.assign_attributes("#{key}": @space.software_api_details[key.to_s])
+    end
+  end
+
+  def assign_extra_attributes
     @space.extra_units = params.dig(:space, :extra_units)&.split(',')
-    @space.software_api_details[:api_key] = @space.api_key
+    %i[api_key restaurant_key].each do |key|
+      if @space.send(key).present?
+        @space.software_api_details[key.to_s] = @space.send(key)
+      else
+        @space.software_api_details.delete(key.to_s)
+      end
+    end
+  end
+
+  def render_form(method)
+    respond_to do |format|
+      if params[:commit].present? && @space.save
+        flash[:success] = I18n.t("spaces.#{method}_success")
+        format.html { redirect_to @space }
+      else
+        build_spaces_attributes
+        format.turbo_stream { render_form_turbo_stream(**form_locals) }
+      end
+    end
+  end
+
+  def build_spaces_attributes
+    @field_submitter = params.dig(:space, :field_submitter)
+  end
+
+  def form_locals
+    { classes_name: 'spaces', model: @space, locals: { space: @space } }
   end
 
   def set_space
@@ -64,6 +86,6 @@ class SpacesController < ApplicationController
   end
 
   def space_params
-    params.require(:space).permit(:description, :software, :api_key, user_ids: [])
+    params.require(:space).permit(:description, :software, :api_key, :restaurant_key, user_ids: [])
   end
 end

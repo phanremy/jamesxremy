@@ -1,40 +1,71 @@
-<div class="w-auto lg:w-1/2">
-  <%= form_with model: @space, builder: TailwindBuilder, data: { turbo: false } do |form| %>
-    <div class="relative my-8 border-b-2 focus-within:border-blue-500">
-      <%= form.text_field :description, placeholder: " " %>
-      <%= form.label :description %>
-    </div>
-    <div class="relative my-8 border-b-2 focus-within:border-blue-500">
-      <%= form.text_field :extra_units, placeholder: " ", value: @space.extra_units.join(',') %>
-      <%= form.label :extra_units %>
-    </div>
-    <div class="flex my-8 items-center justify-between">
-      <%= form.label :software, class: "relative", style: "top: 0px; transform: none !important;" %>
-      <%= form.select(:software,
-                      options_for_select(softwares_list, @space.software),
-                      {},
-                      { data:     { controller:  "slim-select",
-                                    placeholder: t('actions.search'),
-                                    "no-result": t('alert.none', class_name: t('software', scope: 'activerecord.attributes.space').pluralize.downcase)  },
-                        class:    "w-full lg:w-1/2 ml-6" }) %>
-    </div>
-    <div class="relative my-8 border-b-2 focus-within:border-blue-500">
-      <%= form.text_field :api_key, placeholder: " " %>
-      <%= form.label :api_key %>
-    </div>
-    <div class="flex my-8 items-center justify-between">
-      <%= form.label :users, class: "relative", style: "top: 0px; transform: none !important;" %>
-      <%= form.select(:user_ids,
-                      User.excluding(@space.owner).order(:email).pluck(:email, :id),
-                      {},
-                      { data:     { controller:  "slim-select",
-                                    placeholder: t('actions.search'),
-                                    "no-result": t('alert.none', class_name: t('user', scope: 'activerecord.models').pluralize.downcase)  },
-                        multiple: true,
-                        class:    "w-full lg:w-1/2 ml-6" }) %>
-    </div>
-    <div class="actions">
-      <%= form.submit t('actions.submit') %>
-    </div>
-  <% end %>
-</div>
+<%= turbo_frame_tag :space, data: {
+  controller: "toggle-attribute",
+  'toggle-attribute-target': 'element',
+  'category': 'turbo_frame',
+  'attribute-change': 'target',
+  'active-value': '_top' } do %>
+
+  <div class="w-auto lg:w-1/2">
+    <%= form_with model: @space, builder: TailwindBuilder,
+                  data: { 'toggle-attribute-target': 'element',
+                          'category':                'form',
+                          'attribute-change':        'novalidate',
+                          'active-value':            true } do |form| %>
+      <div class="relative my-8 border-b-2 focus-within:border-blue-500">
+        <%= form.text_field :description, placeholder: " " %>
+        <%= form.label :description %>
+      </div>
+      <div class="relative my-8 border-b-2 focus-within:border-blue-500">
+        <%= form.text_field :extra_units, placeholder: " ", value: @space.extra_units.join(',') %>
+        <%= form.label :extra_units %>
+      </div>
+      <div class="flex my-8 items-center justify-between">
+        <%= form.label :software, class: "relative", style: "top: 0px; transform: none !important;" %>
+        <%= form.select(:software,
+                        options_for_select(softwares_list, @space.software),
+                        {},
+                        { data:     { controller:  "slim-select submit-form",
+                                      placeholder: t('actions.search'),
+                                      "no-result": t('alert.none', class_name: t('software', scope: 'activerecord.attributes.space').pluralize.downcase),
+                                      action: 'toggle-attribute#toggle change->submit-form#submit',
+                                      'category': 'form',
+                                      'submit-form-auto-submit-value': true,
+                                      'submit-form-prevent-validation-value': true },
+                          class:    "w-full lg:w-1/2 ml-6" }) %>
+      </div>
+      <% if form.object.software == 'zelty' %>
+        <div class="relative my-8 border-b-2 focus-within:border-blue-500">
+          <%= form.text_field :api_key, placeholder: " " %>
+          <%= form.label :api_key %>
+        </div>
+      <% elsif form.object.software == 'tiller' %>
+        <div class="relative my-8 border-b-2 focus-within:border-blue-500">
+          <%= form.text_field :api_key, placeholder: " " %>
+          <%= form.label :api_key %>
+        </div>
+        <div class="relative my-8 border-b-2 focus-within:border-blue-500">
+          <%= form.text_field :restaurant_key, placeholder: " " %>
+          <%= form.label :restaurant_key %>
+        </div>
+      <% end %>
+      <div class="flex my-8 items-center justify-between">
+        <%= form.label :users, class: "relative", style: "top: 0px; transform: none !important;" %>
+        <%= form.select(:user_ids,
+                        User.excluding(@space.owner).order(:email).pluck(:email, :id),
+                        {},
+                        { data:     { controller:  "slim-select",
+                                      placeholder: t('actions.search'),
+                                      "no-result": t('alert.none', class_name: t('user', scope: 'activerecord.models').pluralize.downcase)  },
+                          multiple: true,
+                          class:    "w-full lg:w-1/2 ml-6" }) %>
+      </div>
+      <div class="actions">
+        <%= form.hidden_field :field_submitter, id: 'field_submitter' %>
+        <%= form.submit t('actions.submit'), data: {
+          action: 'toggle-attribute#toggle',
+          'category': 'turbo_frame',
+        } %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

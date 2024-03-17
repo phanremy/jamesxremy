@@ -21,15 +21,7 @@ class ProductsController < ApplicationController
   def create
     @product = @space.products.build(product_params)
 
-    respond_to do |format|
-      if params[:commit].present? && @product.save
-        flash[:success] = I18n.t('products.create_success')
-        format.turbo_stream { redirect_to space_product_path(@product, space_id: @space.id) }
-      else
-        build_product_attributes
-        format.turbo_stream { render_turbo_stream }
-      end
-    end
+    render_form(:create)
   end
 
   def edit
@@ -39,15 +31,7 @@ class ProductsController < ApplicationController
   def update
     @product.assign_attributes(product_params)
 
-    respond_to do |format|
-      if params[:commit].present? && @product.save
-        flash[:success] = I18n.t('products.update_success')
-        format.html { redirect_to space_product_path(@product, space_id: @space.id) }
-      else
-        build_product_attributes
-        format.turbo_stream { render_turbo_stream }
-      end
-    end
+    render_form(:update)
   end
 
   def destroy
@@ -67,19 +51,27 @@ class ProductsController < ApplicationController
           .order(:description)
   end
 
+  def render_form(method)
+    respond_to do |format|
+      if params[:commit].present? && @product.save
+        flash[:success] = I18n.t("products.#{method}_success")
+        format.html { redirect_to space_product_path(@product, space_id: @space.id) }
+      else
+        build_product_attributes
+        format.turbo_stream { render_form_turbo_stream(**form_locals) }
+      end
+    end
+  end
+
   def build_product_attributes
     @field_submitter = params.dig(:product, :field_submitter)
     @product.product_items.build if params[:add_item]
   end
 
-  def render_turbo_stream
-    flash.now[:error] = @product.errors.full_messages if @product.errors.any?
-    @turbo_stream_data = [
-      turbo_stream.update(:space, partial: 'products/form', locals: { product: @product, space: @product.space }),
-      turbo_stream.update('flash', partial: 'shared/flash')
-    ]
-
-    render turbo_stream: @turbo_stream_data
+  def form_locals
+    { classes_name: 'products',
+      model: @product,
+      locals: { product: @product, space: @product.space } }
   end
 
   def product_params

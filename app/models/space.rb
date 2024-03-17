@@ -12,7 +12,7 @@ class Space < ApplicationRecord
   has_many :products, dependent: :destroy
   has_many :sales, dependent: :destroy
 
-  attr_accessor :api_key
+  attr_accessor :api_key, :restaurant_key
 
   SOFTWARES = %i[none l_addition square tiller zelty].freeze
 
