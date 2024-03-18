@@ -1,7 +1,9 @@
   <div class="py-5">
     <%= space.sales.count %> <%= t('sale', scope: 'activerecord.models').pluralize(space.sales.count) %> (API)
     <br>
-    <%= space.total_prices %> €
+    Total <%= t('final_amount_inc_tax', scope: 'activerecord.attributes.sale') %> : <%= space.total_final_amount_inc_tax.fdiv(100) %> €
+    <br>
+    Total <%= t('final_amount_exc_tax', scope: 'activerecord.attributes.sale') %> : <%= space.total_final_amount_exc_tax.fdiv(100) %> €
   </div>
 
   <% space.sales.order(created_at: :desc).each do |sale| %>

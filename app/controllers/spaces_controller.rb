@@ -45,14 +45,14 @@ class SpacesController < ApplicationController
   private
 
   def set_assign_attributes
-    %i[api_key restaurant_key].each do |key|
+    %i[token restaurant_key].each do |key|
       @space.assign_attributes("#{key}": @space.software_api_details[key.to_s])
     end
   end
 
   def assign_extra_attributes
     @space.extra_units = params.dig(:space, :extra_units)&.split(',')
-    %i[api_key restaurant_key].each do |key|
+    %i[token restaurant_key].each do |key|
       if @space.send(key).present?
         @space.software_api_details[key.to_s] = @space.send(key)
       else
@@ -86,6 +86,6 @@ class SpacesController < ApplicationController
   end
 
   def space_params
-    params.require(:space).permit(:description, :software, :api_key, :restaurant_key, user_ids: [])
+    params.require(:space).permit(:description, :software, :token, :restaurant_key, user_ids: [])
   end
 end

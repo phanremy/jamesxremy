@@ -35,8 +35,8 @@
       </div>
       <% if form.object.software == 'zelty' %>
         <div class="relative my-8 border-b-2 focus-within:border-blue-500">
-          <%= form.text_field :api_key, placeholder: " " %>
-          <%= form.label :api_key %>
+          <%= form.text_field :token, placeholder: " " %>
+          <%= form.label :token %>
         </div>
       <% elsif form.object.software == 'tiller' %>
         <div class="relative my-8 border-b-2 focus-within:border-blue-500">

@@ -183,11 +183,12 @@ fr:
       sale:
         space_id: Restaurant
         details: Détails
-        raw_post: Post Brut
         kind: Type
         status: Status
         webhook_identifier: Identifiant Webhook
         event: Evènement
+        final_amount_inc_tax: Prix TTC
+        final_amount_exc_tax: Prix HT
         created_at: Date
       space:
         owner_id: Admin
@@ -195,7 +196,9 @@ fr:
         extra_units: Unités Supplémentaires (séparées par une virgule)
         software: Logiciel de Caisse
         software_api_details: Détails API
+        token: Token
         api_key: Clé API
+        restaurant_key: Clé Restaurant API
       supplier:
         name: Nom
         expected_day: Nb de Jours prévus

@@ -16,8 +16,12 @@ class Space < ApplicationRecord
 
   # TODO: check if extra_units deleted are not used
 
-  def total_prices
-    100
+  def total_final_amount_inc_tax
+    sales.pluck(:final_amount_inc_tax).sum
+  end
+
+  def total_final_amount_exc_tax
+    sales.pluck(:final_amount_exc_tax).sum
   end
 
   def members

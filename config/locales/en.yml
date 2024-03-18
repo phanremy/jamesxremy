@@ -187,11 +187,12 @@ en:
       sale:
         space_id: Restaurant
         details: Details
-        raw_post: Raw Post
         kind: Kind
         status: Status
         webhook_identifier: Webhook Identifier
         event: Event
+        final_amount_inc_tax: Price incl. tax
+        final_amount_exc_tax: Price excl. tax
         created_at: Date
       space:
         owner_id: Admin
@@ -200,6 +201,7 @@ en:
         software: Software
         software_api_details: API details
         software_connected_at: Connected At
+        token: Token
         api_key: API key
         restaurant_key: Restaurant Key
       supplier:

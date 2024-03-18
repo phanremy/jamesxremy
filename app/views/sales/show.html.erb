@@ -14,6 +14,18 @@
     <%= t('status', scope: 'activerecord.attributes.sale') %> : <%= @sale.status %>
   </div>
   <div class="py-1">
+    <%= t('final_amount_inc_tax', scope: 'activerecord.attributes.sale') %> : <%= @sale.final_amount_inc_tax.fdiv(100) %> €
+  </div>
+  <div class="py-1">
+    <%= t('final_amount_exc_tax', scope: 'activerecord.attributes.sale') %> : <%= @sale.final_amount_exc_tax.fdiv(100) %> €
+  </div>
+  <div class="py-1">
+    <%= t('details', scope: 'activerecord.attributes.sale') %> :
+    <pre>
+      <%= JSON.pretty_generate(@sale.details) %>
+    </pre>
+  </div>
+  <div class="py-1">
     <%= t('kind', scope: 'activerecord.attributes.sale') %> : <%= @sale.kind %>
   </div>
   <div class="py-1">
@@ -21,14 +33,5 @@
   </div>
   <div class="py-1">
     <%= t('event', scope: 'activerecord.attributes.sale') %> : <%= @sale.event %>
-  </div>
-  <div class="py-1">
-    <%= t('raw_post', scope: 'activerecord.attributes.sale') %> : <%= @sale.raw_post %>
-  </div>
-  <div class="py-1">
-    <%= t('details', scope: 'activerecord.attributes.sale') %> :
-    <pre>
-      <%= JSON.pretty_generate(@sale.details) %>
-    </pre>
   </div>
 <% end %>

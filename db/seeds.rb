@@ -90,5 +90,8 @@ item_ids = Item.pluck(:id)
 end
 
 5.times.each do |time|
-  Sale.create(space: space1, details: { key: 'value'})
+  Sale.create(space: space1,
+              final_amount_inc_tax: 90,
+              final_amount_exc_tax: 100,
+              details: { key: 'value'})
 end
