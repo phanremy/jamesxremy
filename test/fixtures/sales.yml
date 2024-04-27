@@ -2,8 +2,14 @@
 
 default:
   space: default
+  uid: 1
+  final_amount_exc_tax: 100
+  final_amount_inc_tax: 90
   details: { customer: 'default'}
 
 alternative:
   space: alternative
+  uid: 2
+  final_amount_exc_tax: 100
+  final_amount_inc_tax: 90
   details: { customer: 'alternative'}

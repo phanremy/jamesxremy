@@ -2,7 +2,7 @@
 
 default:
   description: MyString
-  reference: MyString
+  uid: MyString
   supplier: default
   space: default
   actual_quantity: 1
@@ -10,7 +10,7 @@ default:
 
 alternative:
   description: MyString
-  reference: MyString
+  uid: MyString
   supplier: alternative
   space: alternative
   actual_quantity: 100

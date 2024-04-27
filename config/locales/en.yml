@@ -160,7 +160,7 @@ en:
     attributes:
       item:
         description: Name
-        reference: ID
+        uid: UID
         supplier_id: Supplier
         price: Price
         actual_quantity: Actual qty (Gross)

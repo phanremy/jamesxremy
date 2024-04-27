@@ -13,6 +13,7 @@ class Order < ApplicationRecord
   enum status: STATUS
 
   validates :status, inclusion: { in: statuses.keys, allow_blank: true }
+  validates :uid, presence: true
 
   before_save :build_order_items, :set_expected_at, if: :new_record?
 

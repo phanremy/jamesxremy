@@ -56,7 +56,7 @@ class ItemsController < ApplicationController
   def items_query
     @space.items
           .includes(:supplier)
-          .description_or_reference_query(params[:search])
+          .description_or_uid_query(params[:search])
           .supplier_query(params[:supplier_id])
           .order(:supplier_id, :description)
   end
@@ -72,7 +72,7 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(
-      :description, :reference, :price, :expected_quantity, :actual_quantity, :supplier_id, :unit
+      :description, :uid, :price, :expected_quantity, :actual_quantity, :supplier_id, :unit
     )
   end
 

@@ -156,7 +156,7 @@ fr:
     attributes:
       item:
         description: Nom
-        reference: ID
+        uid: UID
         supplier_id: Fournisseur
         price: Prix
         actual_quantity:  Qté actuelle (Brut)

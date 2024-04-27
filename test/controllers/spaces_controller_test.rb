@@ -28,7 +28,7 @@ class SpacesControllerTest < ActionDispatch::IntegrationTest
 
   test 'create' do
     assert_difference 'Space.count' do
-      post spaces_path, params: { space: { description: 'example' } }
+      post spaces_path, params: { commit: true, space: { description: 'example' } }
       assert_response :redirect
       assert_redirected_to Space.last
     end
@@ -37,7 +37,7 @@ class SpacesControllerTest < ActionDispatch::IntegrationTest
   test 'update' do
     space = spaces(:default)
     assert_changes -> { space.reload.description } do
-      put space_path(id: space.id), params: { space: { description: 'example' } }
+      put space_path(id: space.id), params: { commit: true, space: { description: 'example' } }
       assert_response :redirect
       assert_redirected_to space_path(id: space.id)
     end

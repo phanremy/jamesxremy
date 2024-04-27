@@ -7,7 +7,7 @@
     </div>
   <% end %>
   <%= item.description %>
-  <br> <%= t('reference', scope: 'activerecord.attributes.item') %> : <%= item.reference %>
+  <br> <%= t('uid', scope: 'activerecord.attributes.item') %> : <%= item.uid %>
   <br> <%= t('supplier_id', scope: 'activerecord.attributes.item') %> : <%= item.supplier.name %>
   <br> <%= t('price', scope: 'activerecord.attributes.item') %> : <%= item.price %> €
   <br> <%= t('unit', scope: 'activerecord.attributes.item') %> : <%= unit_name(item.unit) %>

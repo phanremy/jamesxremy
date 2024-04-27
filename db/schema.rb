@@ -20,7 +20,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_03_093652) do
 
   create_table "items", force: :cascade do |t|
     t.string "description", default: "", null: false
-    t.string "reference", default: "", null: false
+    t.string "uid", default: "", null: false
     t.decimal "price", default: "0.0", null: false
     t.decimal "actual_quantity", default: "0.0", null: false
     t.decimal "expected_quantity", default: "0.0", null: false
@@ -31,6 +31,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_03_093652) do
     t.datetime "updated_at", null: false
     t.index ["space_id"], name: "index_items_on_space_id"
     t.index ["supplier_id"], name: "index_items_on_supplier_id"
+    t.index ["uid"], name: "index_items_on_uid"
   end
 
   create_table "links", force: :cascade do |t|
@@ -102,6 +103,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_03_093652) do
   create_table "sales", force: :cascade do |t|
     t.bigint "space_id", null: false
     t.jsonb "details", null: false
+    t.string "uid", null: false
+    t.string "uuid"
     t.string "kind", default: "", null: false
     t.string "status", default: "pending", null: false
     t.string "webhook_identifier", default: "", null: false
@@ -111,6 +114,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_03_093652) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["space_id"], name: "index_sales_on_space_id"
+    t.index ["uid"], name: "index_sales_on_uid"
+    t.index ["uuid"], name: "index_sales_on_uuid"
   end
 
   create_table "space_users", force: :cascade do |t|

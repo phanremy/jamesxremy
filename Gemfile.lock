@@ -347,6 +347,7 @@ GEM
 PLATFORMS
   arm64-darwin-21
   x86_64-darwin-21
+  x86_64-darwin-22
 
 DEPENDENCIES
   acts_as_votable
