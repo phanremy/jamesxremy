@@ -14,8 +14,7 @@ class CreateSales < ActiveRecord::Migration[7.1]
       t.string :event, null: false, default: ''
       t.integer :final_amount_inc_tax, null: false
       t.integer :final_amount_exc_tax, null: false
-
-      t.timestamps
+      t.datetime :created_at, null: false
     end
   end
 end

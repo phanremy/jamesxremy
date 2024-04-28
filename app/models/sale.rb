@@ -7,7 +7,7 @@ class Sale < ApplicationRecord
 
   belongs_to :space
 
-  validates :details, presence: true
+  validates :uid, :details, presence: true
 
   def products
     Product.none
