@@ -9,7 +9,11 @@ class Sale < ApplicationRecord
 
   validates :uid, :details, presence: true
 
-  def products
-    Product.none
+  def products_list
+    return Product.none unless space.software == 'zelty'
+
+    details['items'].map do |data|
+      space.products.find_by(description: data['name'])
+    end
   end
 end

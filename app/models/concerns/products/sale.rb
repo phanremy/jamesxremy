@@ -8,7 +8,7 @@ module Products
     def process_sale(sale: true)
       Product.transaction do
         increment = sale ? 1 : -1
-        update!(sales_count: sales_count + increment)
+        update!(sales_count: reload.sales_count + increment)
         product_items.each do |product_item|
           increment = sale ? -1 * product_item.gross_quantity : product_item.gross_quantity
           item = product_item.item
