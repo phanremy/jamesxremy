@@ -46,52 +46,52 @@ _space2 = Space.create(owner: creator, description: 'Mon Restaurant', user_ids: 
 
 Link.create(space: space1, owner: creator)
 
-100.times.each do |time|
-  Supplier.create(name: Faker::Company.name.split(/[ ,]/).first,
-                  space: space1,
-                  expected_day: (1..6).to_a.sample,
-                  expected_week: (0..1).to_a.sample,
-                  expected_month: 0)
-end
+# 100.times.each do |time|
+#   Supplier.create(name: Faker::Company.name.split(/[ ,]/).first,
+#                   space: space1,
+#                   expected_day: (1..6).to_a.sample,
+#                   expected_week: (0..1).to_a.sample,
+#                   expected_month: 0)
+# end
 
-supplier_ids = Supplier.pluck(:id)
+# supplier_ids = Supplier.pluck(:id)
 
-100.times.each do |time|
-  Item.create(description: Faker::Food.ingredient,
-              reference: (10000..99999).to_a.sample,
-              space: space1,
-              supplier_id: supplier_ids.sample,
-              price: (10..99).to_a.sample.fdiv(10),
-              actual_quantity: (2..100).to_a.sample,
-              unit: Item::UNITS.sample,
-              expected_quantity: (2..100).to_a.sample)
-end
+# 100.times.each do |time|
+#   Item.create(description: Faker::Food.ingredient,
+#               reference: (10000..99999).to_a.sample,
+#               space: space1,
+#               supplier_id: supplier_ids.sample,
+#               price: (10..99).to_a.sample.fdiv(10),
+#               actual_quantity: (2..100).to_a.sample,
+#               unit: Item::UNITS.sample,
+#               expected_quantity: (2..100).to_a.sample)
+# end
 
-Supplier.all.each do |supplier|
-  Order.create(space: space1, supplier:)
-end
+# Supplier.all.each do |supplier|
+#   Order.create(space: space1, supplier:)
+# end
 
-100.times.each do |time|
-  Product.create(description: Faker::Food.dish,
-                 space: space1,
-                 price: (100..300).to_a.sample.fdiv(10),
-                 sales_count: (0..99).to_a.sample)
-end
+# 100.times.each do |time|
+#   Product.create(description: Faker::Food.dish,
+#                  space: space1,
+#                  price: (100..300).to_a.sample.fdiv(10),
+#                  sales_count: (0..99).to_a.sample)
+# end
 
-product_ids = Product.pluck(:id)
-item_ids = Item.pluck(:id)
+# product_ids = Product.pluck(:id)
+# item_ids = Item.pluck(:id)
 
-200.times.each do |time|
-  ProductItem.create(product_id: product_ids.sample,
-                     item_id: item_ids.sample,
-                     gross_quantity: (1..5).to_a.sample,
-                     net_quantity: (1..5).to_a.sample,
-                     quantity_ratio: (1..9).to_a.sample.fdiv(10))
-end
+# 200.times.each do |time|
+#   ProductItem.create(product_id: product_ids.sample,
+#                      item_id: item_ids.sample,
+#                      gross_quantity: (1..5).to_a.sample,
+#                      net_quantity: (1..5).to_a.sample,
+#                      quantity_ratio: (1..9).to_a.sample.fdiv(10))
+# end
 
-5.times.each do |time|
-  Sale.create(space: space1,
-              final_amount_inc_tax: 90,
-              final_amount_exc_tax: 100,
-              details: { key: 'value'})
-end
+# 5.times.each do |time|
+#   Sale.create(space: space1,
+#               final_amount_inc_tax: 90,
+#               final_amount_exc_tax: 100,
+#               details: { key: 'value'})
+# end

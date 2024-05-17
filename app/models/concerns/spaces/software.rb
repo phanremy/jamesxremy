@@ -10,7 +10,11 @@ module Spaces
       attr_accessor :token, :restaurant_key
 
       validate :software_already_connected?
-      after_commit :link_with_zelty, if: proc { !software_connected_at? && software == 'zelty' }
+      after_commit :link_with_zelty, if: proc { !software_connected_at? && zelty? }
+    end
+
+    def zelty?
+      software == 'zelty'
     end
 
     def software_already_connected?
@@ -24,9 +28,9 @@ module Spaces
       Spaces::Zelty::Connect.new(self).connect
       self.software_connected_at = Time.current
     rescue StandardError
-      # errors.add(:software, I18n.t('alert.general_error'))
+      errors.add(:software, 'failed to connect')
 
-      # false
+      false
     end
   end
 end

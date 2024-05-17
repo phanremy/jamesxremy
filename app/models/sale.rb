@@ -16,4 +16,25 @@ class Sale < ApplicationRecord
       space.products.find_by(description: data['name'])
     end
   end
+
+  def products
+    dig_zelty_item_details(:name) if space.zelty?
+  end
+
+  def product_ids
+    dig_zelty_item_details(:id) if space.zelty?
+  end
+
+  def prices
+    details['price'] if space.zelty?
+  end
+
+  private
+
+  def dig_zelty_item_details(stuff)
+    return [] unless details['items']&.any?
+
+    details['items'].map { |item| item[stuff.to_s] }
+
+  end
 end
